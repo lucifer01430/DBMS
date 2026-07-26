@@ -1,10 +1,10 @@
 /* ============================================================
-   DBMS ROADMAP — APP LOGIC
+   DBMS COURSE — APP LOGIC
    No backend, no build step. Progress lives in localStorage
    on this browser only.
    ============================================================ */
 
-const STORAGE_KEY = "aktu_dbms_progress_v1";
+const STORAGE_KEY = "dbms_course_progress_unit1_v1";
 
 function loadProgress() {
   try {
@@ -45,8 +45,8 @@ function deriveRoadmapStatus(progress, chapter) {
 
 const STATUS_META = {
   locked:       { label: "Locked",       icon: "\u25A2", cls: "st-locked" },
-  available:    { label: "Available",    icon: "\u25A2", cls: "st-available" },
-  "in-progress":{ label: "In Progress",  icon: "\u25D0", cls: "st-progress" },
+  available:    { label: "Start",        icon: "\u25A2", cls: "st-available" },
+  "in-progress":{ label: "In Progress",  icon: "\u25D0", cls: "st-in-progress" },
   completed:    { label: "Completed",    icon: "\u2611", cls: "st-completed" },
 };
 
@@ -132,7 +132,7 @@ function renderTracker() {
         <div class="stat-ring" style="--pct:${pct}">
           <span>${pct}%</span>
         </div>
-        <div class="stat-label">Syllabus Coverage</div>
+        <div class="stat-label">Unit 1 Coverage</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">${completed.length}</div>
@@ -140,7 +140,7 @@ function renderTracker() {
       </div>
       <div class="stat-card">
         <div class="stat-number">${remaining}</div>
-        <div class="stat-label">Remaining Chapters</div>
+        <div class="stat-label">Unit 1 Remaining</div>
       </div>
       <div class="stat-card">
         <div class="stat-number-sm">${currentChapter ? "CH " + String(currentChapter.id).padStart(2, "0") : "\u2014"}</div>

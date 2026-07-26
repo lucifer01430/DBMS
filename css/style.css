@@ -1,5 +1,5 @@
 /* ============================================================
-   AKTU DBMS LEARNING PATH — DESIGN SYSTEM
+   DBMS COURSE LEARNING PATH — DESIGN SYSTEM
    Theme: "Query Console" — a dark database-console aesthetic.
    Chapters are rendered as connected schema records down a
    relationship rail, echoing the ER-diagram world of DBMS.
@@ -93,10 +93,33 @@ img, svg { max-width: 100%; display: block; }
 .nav-links a { color: var(--text-dim); }
 .nav-links a:hover { color: var(--accent); text-decoration: none; }
 
+.btn {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 11px 18px;
+  border-radius: 7px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #1a1400;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.btn:hover { transform: translateY(-1px); text-decoration: none; }
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+.btn-outline:hover { border-color: var(--text-dim); }
+
 /* ---------- Hero ---------- */
 
 .hero {
-  padding: 64px 0 40px;
+  padding: 72px 0 48px;
   border-bottom: 1px solid var(--border-soft);
 }
 .hero-eyebrow {
@@ -111,6 +134,12 @@ h1.hero-title {
 }
 h1.hero-title span { color: var(--accent); }
 .hero-desc { color: var(--text-dim); font-size: 1.05rem; max-width: 620px; margin: 0 0 26px; }
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 0 22px;
+}
 .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; }
 .badge {
   font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-dim);
@@ -130,6 +159,43 @@ h1.hero-title span { color: var(--accent); }
   font-family: var(--font-display); font-size: 1.7rem; margin: 0 0 8px; font-weight: 600;
 }
 .section-head p { color: var(--text-dim); margin: 0; max-width: 640px; }
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.overview-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.overview-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  background: rgba(79,209,197,0.1);
+  border: 1px solid var(--teal-dim);
+  color: var(--teal);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+.overview-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  margin: 0 0 8px;
+}
+.overview-card p {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin: 0;
+}
 
 /* ============================================================
    PROGRESS TRACKER
@@ -262,13 +328,17 @@ a.chapter-node .chapter-card:hover { border-color: var(--accent); transform: tra
   color: var(--text-faint); font-size: 0.85rem; text-align: center;
 }
 .site-footer code { font-family: var(--font-mono); color: var(--text-dim); }
+.site-footer a { color: var(--accent); font-weight: 600; }
 
 /* ---------- Responsive ---------- */
 
 @media (max-width: 720px) {
+  .overview-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .nav-links { display: none; }
   .tracker-row { flex-direction: column; align-items: flex-start; }
+  .tracker-row-controls { width: 100%; flex-wrap: wrap; }
+  .mini-btn { flex: 1; min-width: 130px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

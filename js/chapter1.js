@@ -172,7 +172,7 @@ const CHECKLIST_ITEMS = [
   "I can explain the difference between data, information, database, and DBMS",
 ];
 
-const CHECKLIST_KEY = "aktu_dbms_ch1_checklist_v1";
+const CHECKLIST_KEY = "dbms_course_ch1_checklist_v1";
 
 function loadChecklistState() {
   try {

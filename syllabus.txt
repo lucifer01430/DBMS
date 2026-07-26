@@ -1,0 +1,124 @@
+DR. A.P.J. Abdul Kalam Technical University, Uttar Pradesh, Lucknow
+B.Tech (CS, Computer Engineering and CSE) – Fifth Semester
+Database Management System (BCS501)
+
+# Detailed Syllabus
+
+## Unit I – Introduction (08 Lectures)
+
+* Overview
+* Database System vs File System
+* Database System Concept and Architecture
+* Data Model Schema and Instances
+* Data Independence
+* Database Language and Interfaces
+* Data Definition Language (DDL)
+* Data Manipulation Language (DML)
+* Overall Database Structure
+* Data Modeling using the Entity Relationship (ER) Model:
+
+  * ER Model Concepts
+  * Notation for ER Diagram
+  * Mapping Constraints
+  * Keys
+  * Super Key
+  * Candidate Key
+  * Primary Key
+  * Generalization
+  * Aggregation
+  * Reduction of ER Diagrams to Tables
+  * Extended ER Model
+  * Relationship of Higher Degree
+
+---
+
+## Unit II – Relational Data Model and Language (08 Lectures)
+
+### Relational Data Model
+
+* Relational Data Model Concepts
+* Integrity Constraints
+* Entity Integrity
+* Referential Integrity
+* Keys Constraints
+* Domain Constraints
+* Relational Algebra
+* Relational Calculus
+* Tuple and Domain Calculus
+
+### Introduction to SQL
+
+* Characteristics of SQL
+* Advantages of SQL
+* SQL Data Types and Literals
+* Types of SQL Commands
+* SQL Operators and Their Procedure
+* Tables
+* Views and Indexes
+* Queries and Subqueries
+* Aggregate Functions
+* Insert
+* Update
+* Delete Operations
+* Joins
+* Unions
+* Intersection
+* Minus
+* Cursors
+* Triggers
+* Procedures in SQL/PL SQL
+
+---
+
+## Unit III – Database Design & Normalization (08 Lectures)
+
+* Functional Dependencies
+* Normal Forms
+
+  * First Normal Form (1NF)
+  * Second Normal Form (2NF)
+  * Third Normal Form (3NF)
+  * Boyce-Codd Normal Form (BCNF)
+* Inclusion Dependency
+* Lossless Join Decomposition
+* Normalization using:
+
+  * Functional Dependency (FD)
+  * Multivalued Dependency (MVD)
+  * Join Dependency (JD)
+* Alternative Approaches to Database Design
+
+---
+
+## Unit IV – Transaction Processing Concept (08 Lectures)
+
+* Transaction System
+* Testing of Serializability
+* Serializability of Schedules
+* Conflict & View Serializable Schedule
+* Recoverability
+* Recovery from Transaction Failures
+* Log-Based Recovery
+* Checkpoints
+* Deadlock Handling
+* Distributed Database
+
+  * Distributed Data Storage
+  * Concurrency Control
+  * Directory System
+
+---
+
+## Unit V – Concurrency Control Techniques (08 Lectures)
+
+* Concurrency Control
+* Locking Techniques for Concurrency Control
+* Timestamp Protocols for Concurrency Control
+* Validation-Based Protocol
+* Multiple Granularity
+* Multi Version Schemes
+* Recovery with Concurrent Transaction
+* Case Study of Oracle
+
+---
+
