@@ -3,122 +3,145 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DBMS Course — Interactive Learning Path</title>
-<meta name="description" content="A premium interactive Database Management System course with a Unit 1 roadmap, progress tracker, and visual chapter experience.">
+<title>DBMS Digital Textbook - Complete Course Roadmap</title>
+<meta name="description" content="A complete digital DBMS engineering textbook generated from the official syllabus, with a full course roadmap, dashboard, and progress system.">
 <script>
   document.documentElement.dataset.theme = localStorage.getItem("dbms_course_theme") || "dark";
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-<link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg" />
-<link rel="shortcut icon" href="/img/favicon/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
-<meta name="apple-mobile-web-app-title" content="DBMS" />
-<link rel="manifest" href="/img/favicon/site.webmanifest" />
+<link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg">
+<link rel="shortcut icon" href="/img/favicon/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="DBMS">
+<link rel="manifest" href="/img/favicon/site.webmanifest">
 </head>
 <body>
 
 <nav class="topnav">
   <div class="topnav-inner">
-    <div class="brand">
-      <span class="brand-mark">DB</span>
-      DBMS Course
-    </div>
-    <div class="nav-links">
-      <a href="#roadmap">Roadmap</a>
-      <a href="#tracker">Progress</a>
-      <a href="unit-1/chapter1.html">Start Chapter</a>
-    </div>
-    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle light and dark theme">
-      <span class="theme-toggle-icon" aria-hidden="true">◐</span>
-      <span class="theme-toggle-text">Theme</span>
+    <a class="brand" href="#top" aria-label="DBMS course home">
+      <img class="brand-logo" src="img/favicon/favicon.svg" alt="">
+      <span class="brand-copy">
+        <strong>DBMS</strong>
+        <small>Digital Textbook</small>
+      </span>
+    </a>
+
+    <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation">
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
+
+    <div class="nav-panel" id="primary-navigation">
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#tracker">Progress</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="unit-1/chapter1.html">Chapter 1</a>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle light and dark theme">
+        <span class="theme-toggle-icon" aria-hidden="true">◐</span>
+        <span class="theme-toggle-text">Theme</span>
+      </button>
+    </div>
   </div>
 </nav>
 
-<header class="hero">
-  <div class="container">
-    <div class="hero-eyebrow">Database Management System &middot; Unit 1</div>
-    <h1 class="hero-title">Learn DBMS from the ground up, <span>visually.</span></h1>
-    <p class="hero-desc">
-      A focused, interactive course module for Unit 1 of Database Management System. Start with database
-      basics, compare DBMS with file systems, understand architecture, then move into ER modeling without
-      drifting away from the official syllabus.
-    </p>
-    <div class="hero-actions">
-      <a class="btn" href="unit-1/chapter1.html">Start Learning</a>
-      <a class="btn btn-outline" href="#roadmap">View Roadmap</a>
-    </div>
-    <div class="hero-badges">
-      <span class="badge">Unit 1 Focus</span>
-      <span class="badge">3 Learning Chapters</span>
-      <span class="badge">No login &middot; No backend</span>
-      <span class="badge">Progress saved on this device</span>
-    </div>
-  </div>
-</header>
-
-<section class="section course-overview" id="overview">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-eyebrow">Course Overview</div>
-      <h2>Built Like a Learning Platform</h2>
-      <p>Unit 1 is broken into small, exam-ready chapters with visual explanations, examples, quick revision, and progress tracking.</p>
-    </div>
-    <div class="overview-grid">
-      <div class="overview-card">
-        <span class="overview-icon">01</span>
-        <h3>Concept Clarity</h3>
-        <p>Simple definitions, everyday examples, and step-by-step explanations before formal points.</p>
+<main id="top">
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="hero-eyebrow">BCS501 · Complete DBMS Course</div>
+        <h1 class="hero-title">Database Management System</h1>
+        <p class="hero-desc">
+          A complete digital engineering textbook mapped from the official syllabus. Open the roadmap and see the full semester journey from database foundations to relational models, SQL, normalization, transactions, concurrency control, recovery, distributed databases, and Oracle.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="unit-1/chapter1.html">Start Chapter 1</a>
+          <a class="btn btn-outline" href="#roadmap">View Full Roadmap</a>
+        </div>
+        <div class="hero-badges">
+          <span class="badge">Only Chapter 1 unlocked</span>
+          <span class="badge">All five units visible</span>
+          <span class="badge" id="syllabus-source">Loading syllabus...</span>
+        </div>
       </div>
-      <div class="overview-card">
-        <span class="overview-icon">02</span>
-        <h3>Visual Learning</h3>
-        <p>Diagrams, flowcharts, comparison tables, and highlighted mistake boxes inside the chapter.</p>
+
+      <aside class="hero-panel" aria-label="Course scope">
+        <div class="hero-panel-top">
+          <img src="img/favicon/web-app-manifest-192x192.png" alt="">
+          <div>
+            <span>AKTU · Fifth Semester</span>
+            <strong>Premium DBMS Learning Path</strong>
+          </div>
+        </div>
+        <div class="hero-stats" id="hero-stats" aria-live="polite"></div>
+      </aside>
+    </div>
+  </header>
+
+  <section class="section course-overview" id="overview">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-eyebrow">Course Architecture</div>
+        <h2>The complete DBMS journey in one place</h2>
+        <p>The homepage now represents the whole course, not a single unit. Every roadmap card is generated from the official syllabus and placed into a chapter sequence.</p>
       </div>
-      <div class="overview-card">
-        <span class="overview-icon">03</span>
-        <h3>Exam Preparation</h3>
-        <p>Important points, quick revision, practice questions, and a browser-only self-test quiz.</p>
+      <div class="overview-grid" id="overview-grid"></div>
+    </div>
+  </section>
+
+  <section class="section tracker-section" id="tracker">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-eyebrow">Progress Dashboard</div>
+        <h2>Whole-course progress tracker</h2>
+        <p>Track the complete DBMS course across all units. Locked chapters still count toward the full syllabus so the dashboard reflects the real remaining journey.</p>
+      </div>
+
+      <div id="tracker-stats" class="stats-grid"></div>
+
+      <div class="unit-bars">
+        <div class="unit-bars-head">
+          <h3>Unit Progress</h3>
+          <span>All five units</span>
+        </div>
+        <div id="tracker-unit-bars"></div>
+      </div>
+
+      <div class="tracker-list-wrap">
+        <div class="unit-bars-head">
+          <h3>Chapter Status</h3>
+          <span>Chapter 1 is editable</span>
+        </div>
+        <div id="tracker-list" class="tracker-list"></div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section" id="tracker">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-eyebrow">Dashboard</div>
-      <h2>Progress Tracker</h2>
-      <p>Your Unit 1 coverage at a glance. Mark chapters as you study &mdash; everything below updates instantly.</p>
+  <section class="section roadmap-section" id="roadmap">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-eyebrow">Official Roadmap</div>
+        <h2>Five-unit DBMS textbook roadmap</h2>
+        <p>Every official syllabus topic appears exactly once inside a chapter card. Chapter 1 is unlocked; the remaining chapters are staged as locked course architecture.</p>
+      </div>
+      <div id="roadmap-list" class="roadmap-list" aria-live="polite"></div>
     </div>
-
-    <div id="tracker-stats" class="stats-grid"></div>
-
-    <div class="unit-bars">
-      <div id="tracker-unit-bars"></div>
-    </div>
-
-    <div id="tracker-list" class="tracker-list"></div>
-  </div>
-</section>
-
-<section class="section" id="roadmap">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-eyebrow">Learning Path</div>
-      <h2>Unit 1 Learning Roadmap</h2>
-      <p>Unit 1 is divided into three closely related chapters. Chapter&nbsp;1 is live now; the ER model chapters are staged next.</p>
-    </div>
-    <div id="roadmap-list"></div>
-  </div>
-</section>
+  </section>
+</main>
 
 <footer class="site-footer">
-  <div class="container">
-    Designed &amp; Developed by <a href="https://lucifer01430.github.io/Portfolio" target="_blank" rel="noopener">Harsh</a>
+  <div class="container footer-inner">
+    <a class="footer-brand" href="#top">
+      <img src="img/favicon/favicon.svg" alt="">
+      <span>DBMS Digital Textbook</span>
+    </a>
+    <span>Designed &amp; Developed by <a href="https://lucifer01430.github.io/Portfolio" target="_blank" rel="noopener">Harsh</a></span>
   </div>
 </footer>
 
