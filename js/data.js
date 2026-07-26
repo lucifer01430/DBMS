@@ -297,8 +297,8 @@ function buildCourseFromUnits(parsedUnits) {
           readingTime: `${readingHours} hrs`,
           practiceTime: `${practiceHours} hrs`,
           totalHours: Math.round((readingHours + practiceHours) * 10) / 10,
-          file: chapterId === 1 ? "unit-1/chapter1.html" : null,
-          available: chapterId === 1,
+          file: chapterId === 1 ? "unit-1/chapter1.html" : chapterId === 2 ? "unit-1/chapter2.html" : null,
+          available: chapterId <= 2,
         };
         chapters.push(chapter);
         unit.chapters.push(chapter.id);

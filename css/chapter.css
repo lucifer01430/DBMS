@@ -24,6 +24,12 @@
   border-bottom: 1px solid var(--border-soft);
   background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 26%, transparent), transparent);
 }
+.chapter-hero .container,
+.chapter-hero .hero-desc,
+.chapter-hero .hero-title {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 .breadcrumb { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-faint); margin-bottom: 14px; }
 .breadcrumb a { color: var(--text-dim); }
 .chapter-meta-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
