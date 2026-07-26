@@ -5,6 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chapter 1 — Introduction to Database Systems | DBMS Course</title>
 <meta name="description" content="DBMS Course Chapter 1: Introduction to Database Systems — overview, DBMS vs file system, architecture, schema & instances, data independence, DDL/DML, overall database structure.">
+<meta name="keywords" content="DBMS chapter 1, introduction to database systems, DBMS vs file system, database architecture, schema and instance, data independence, DDL, DML, BCS501">
+<meta name="author" content="Harsh">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0b1020">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chapter 1 - Introduction to Database Systems | DBMS Digital Textbook">
+<meta property="og:description" content="A complete textbook-style DBMS Chapter 1 covering database fundamentals, DBMS architecture, data independence, database languages, and overall DBMS structure.">
+<meta property="og:image" content="../img/favicon/web-app-manifest-512x512.png">
+<meta property="og:site_name" content="DBMS Digital Textbook">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 1 - Introduction to Database Systems">
+<meta name="twitter:description" content="Study database fundamentals, DBMS architecture, schema and instance, data independence, DDL, DML, and overall DBMS structure.">
+<meta name="twitter:image" content="../img/favicon/web-app-manifest-512x512.png">
 <script>
   document.documentElement.dataset.theme = localStorage.getItem("dbms_course_theme") || "dark";
 </script>
@@ -19,24 +32,37 @@
 <meta name="apple-mobile-web-app-title" content="DBMS" />
 <link rel="manifest" href="../img/favicon/site.webmanifest" />
 </head>
-<body>
+<body id="top">
 <div class="reading-progress" aria-hidden="true"><div id="reading-progress-fill"></div></div>
 
 <nav class="topnav">
   <div class="topnav-inner">
-    <div class="brand">
-      <span class="brand-mark">DB</span>
-      DBMS Course
-    </div>
-    <div class="nav-links">
-      <a href="../index.html#roadmap">Roadmap</a>
-      <a href="../index.html#tracker">Progress</a>
-      <a href="../index.html">Home</a>
-    </div>
-    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle light and dark theme">
-      <span class="theme-toggle-icon" aria-hidden="true">◐</span>
-      <span class="theme-toggle-text">Theme</span>
+    <a class="brand" href="../index.html#top" aria-label="DBMS course home">
+      <img class="brand-logo" src="../img/favicon/web-app-manifest-192x192.png" alt="">
+      <span class="brand-copy">
+        <strong>DBMS</strong>
+        <small>Digital Textbook</small>
+      </span>
+    </a>
+
+    <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation">
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
+
+    <div class="nav-panel" id="primary-navigation">
+      <div class="nav-links">
+        <a href="../index.html#overview">Overview</a>
+        <a href="../index.html#tracker">Progress</a>
+        <a href="../index.html#roadmap">Roadmap</a>
+        <a href="#top">Chapter 1</a>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle light and dark theme">
+        <span class="theme-toggle-icon" aria-hidden="true">◐</span>
+        <span class="theme-toggle-text">Theme</span>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -1716,8 +1742,12 @@
 </main>
 
 <footer class="site-footer">
-  <div class="container">
-    Designed &amp; Developed by <a href="https://lucifer01430.github.io/Portfolio" target="_blank" rel="noopener">Harsh</a>
+  <div class="container footer-inner">
+    <a class="footer-brand" href="../index.html#top">
+      <img src="../img/favicon/web-app-manifest-192x192.png" alt="">
+      <span>DBMS Digital Textbook</span>
+    </a>
+    <span>Designed &amp; Developed by <a href="https://lucifer01430.github.io/Portfolio" target="_blank" rel="noopener">Harsh</a></span>
   </div>
 </footer>
 
