@@ -5,6 +5,32 @@
    ============================================================ */
 
 const STORAGE_KEY = "dbms_course_progress_unit1_v1";
+const THEME_KEY = "dbms_course_theme";
+
+function initThemeToggle() {
+  const root = document.documentElement;
+  const saved = localStorage.getItem(THEME_KEY) || "dark";
+  root.dataset.theme = saved;
+
+  document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+    const updateLabel = () => {
+      const isLight = root.dataset.theme === "light";
+      const icon = btn.querySelector(".theme-toggle-icon");
+      const text = btn.querySelector(".theme-toggle-text");
+      if (icon) icon.textContent = isLight ? "☾" : "☼";
+      if (text) text.textContent = isLight ? "Dark" : "Light";
+      btn.setAttribute("aria-label", `Switch to ${isLight ? "dark" : "light"} theme`);
+    };
+
+    updateLabel();
+    btn.addEventListener("click", () => {
+      const nextTheme = root.dataset.theme === "light" ? "dark" : "light";
+      root.dataset.theme = nextTheme;
+      localStorage.setItem(THEME_KEY, nextTheme);
+      updateLabel();
+    });
+  });
+}
 
 function loadProgress() {
   try {
@@ -81,8 +107,9 @@ function renderRoadmap() {
     chaptersInUnit.forEach((chapter) => {
       const status = deriveRoadmapStatus(progress, chapter);
       const meta = STATUS_META[status];
-      const node = document.createElement(chapter.file ? "a" : "div");
-      if (chapter.file) node.href = chapter.file;
+      const state = getChapterState(progress, chapter);
+      const chapterPct = state === "completed" ? 100 : state === "in_progress" ? 50 : 0;
+      const node = document.createElement("div");
       node.className = `chapter-node ${meta.cls}`;
 
       node.innerHTML = `
@@ -94,10 +121,20 @@ function renderRoadmap() {
           </div>
           <h4 class="chapter-title">${chapter.name}</h4>
           <p class="chapter-topics">${chapter.topics}</p>
+          <div class="chapter-progress">
+            <div class="chapter-progress-label">
+              <span>Progress</span>
+              <span>${chapterPct}%</span>
+            </div>
+            <div class="chapter-progress-track"><div style="width:${chapterPct}%"></div></div>
+          </div>
           <div class="chapter-card-bottom">
             <span class="diff-pill diff-${chapter.difficulty.toLowerCase()}">${chapter.difficulty}</span>
             <span class="time-pill">\u23F1 ${chapter.time}</span>
           </div>
+          ${chapter.file
+            ? `<a class="chapter-start-btn" href="${chapter.file}">${state === "completed" ? "Review Chapter" : "Start Learning"}</a>`
+            : `<span class="chapter-start-btn is-disabled">Coming Soon</span>`}
         </div>
       `;
       rail.appendChild(node);
@@ -129,21 +166,26 @@ function renderTracker() {
   if (statsEl) {
     statsEl.innerHTML = `
       <div class="stat-card stat-primary">
+        <div class="stat-icon">↗</div>
         <div class="stat-ring" style="--pct:${pct}">
           <span>${pct}%</span>
         </div>
         <div class="stat-label">Unit 1 Coverage</div>
       </div>
       <div class="stat-card">
+        <div class="stat-icon">✓</div>
         <div class="stat-number">${completed.length}</div>
         <div class="stat-label">Completed Chapters</div>
       </div>
       <div class="stat-card">
+        <div class="stat-icon">○</div>
         <div class="stat-number">${remaining}</div>
         <div class="stat-label">Unit 1 Remaining</div>
       </div>
       <div class="stat-card">
+        <div class="stat-icon">▶</div>
         <div class="stat-number-sm">${currentChapter ? "CH " + String(currentChapter.id).padStart(2, "0") : "\u2014"}</div>
+        <div class="stat-subtitle">${currentChapter ? currentChapter.name : "No active chapter"}</div>
         <div class="stat-label">Current Chapter</div>
       </div>
     `;
@@ -158,7 +200,7 @@ function renderTracker() {
         <div class="unit-bar-row">
           <div class="unit-bar-label">
             <span>Unit ${unit.id} \u2014 ${unit.name}</span>
-            <span>${doneInUnit}/${chaptersInUnit.length}</span>
+            <span>${doneInUnit}/${chaptersInUnit.length} · ${unitPct}%</span>
           </div>
           <div class="unit-bar-track">
             <div class="unit-bar-fill" style="width:${unitPct}%"></div>
@@ -201,6 +243,7 @@ function renderTracker() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  initThemeToggle();
   renderRoadmap();
   renderTracker();
 });

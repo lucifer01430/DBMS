@@ -5,12 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chapter 1 — Introduction to Database Systems | DBMS Course</title>
 <meta name="description" content="DBMS Course Chapter 1: Introduction to Database Systems — overview, DBMS vs file system, architecture, schema & instances, data independence, DDL/DML, overall database structure.">
+<script>
+  document.documentElement.dataset.theme = localStorage.getItem("dbms_course_theme") || "dark";
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/chapter.css">
 </head>
 <body>
+<div class="reading-progress" aria-hidden="true"><div id="reading-progress-fill"></div></div>
 
 <nav class="topnav">
   <div class="topnav-inner">
@@ -23,6 +27,10 @@
       <a href="../index.html#tracker">Progress</a>
       <a href="../index.html">Home</a>
     </div>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle light and dark theme">
+      <span class="theme-toggle-icon" aria-hidden="true">◐</span>
+      <span class="theme-toggle-text">Theme</span>
+    </button>
   </div>
 </nav>
 
@@ -38,37 +46,70 @@
     </p>
     <div class="chapter-meta-row">
       <span class="badge">Difficulty: Beginner</span>
-      <span class="badge">~2.5 hrs</span>
+      <span class="badge" id="reading-time">Estimated read: calculating</span>
+      <span class="badge">Last updated: Jul 26, 2026</span>
       <span class="badge">8 sub-topics</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn" href="../index.html#roadmap">Back to Roadmap</a>
+      <a class="btn btn-outline" href="#objectives">Start Reading</a>
     </div>
 
     <div class="toc-box">
       <h4>On this page</h4>
       <div class="toc-grid">
         <a href="#objectives">1. Learning Objectives</a>
-        <a href="#topics-covered">2. Syllabus Topics Covered</a>
-        <a href="#overview">3. Overview of Database Systems</a>
-        <a href="#db-vs-file">4. Database System vs File System</a>
-        <a href="#architecture">5. Database System Architecture</a>
-        <a href="#schema-instance">6. Data Models, Schema &amp; Instances</a>
-        <a href="#independence">7. Data Independence</a>
-        <a href="#languages">8. Database Languages &amp; Interfaces</a>
-        <a href="#overall-structure">9. Overall Database Structure</a>
-        <a href="#memory-tricks">10. Memory Tricks</a>
-        <a href="#exam-points">11. Important Exam Points</a>
-        <a href="#faqs">12. FAQs</a>
-        <a href="#pyq">13. Previous Year Question Focus</a>
-        <a href="#revision">14. Quick Revision Notes</a>
-        <a href="#summary">15. Chapter Summary</a>
-        <a href="#practice">16. Practice Questions</a>
-        <a href="#quiz">17. Self-Test Quiz</a>
-        <a href="#checklist">18. Chapter Checklist</a>
+        <a href="#prerequisites">2. Prerequisite Knowledge</a>
+        <a href="#topics-covered">3. Syllabus Topics Covered</a>
+        <a href="#overview">4. Introduction</a>
+        <a href="#db-vs-file">5. Database System vs File System</a>
+        <a href="#architecture">6. Database System Architecture</a>
+        <a href="#schema-instance">7. Data Models, Schema &amp; Instances</a>
+        <a href="#independence">8. Data Independence</a>
+        <a href="#languages">9. Database Languages &amp; Interfaces</a>
+        <a href="#overall-structure">10. Overall Database Structure</a>
+        <a href="#terminologies">11. Important Terminologies</a>
+        <a href="#key-points">12. Key Points</a>
+        <a href="#exam-points">13. Important Exam Points</a>
+        <a href="#memory-tricks">14. Memory Tricks</a>
+        <a href="#revision">15. Quick Revision Notes</a>
+        <a href="#summary">16. Chapter Summary</a>
+        <a href="#practice">17. Practice Questions</a>
+        <a href="#university-questions">18. University Questions</a>
+        <a href="#quiz">19. Self Assessment Quiz</a>
+        <a href="#interview">20. Interview Fundamentals</a>
+        <a href="#checklist">21. Chapter Checklist</a>
+        <a href="#chapter-end">22. What You Learned</a>
       </div>
     </div>
   </div>
 </header>
 
-<main class="container">
+<main class="chapter-shell container">
+  <aside class="chapter-sidebar" aria-label="Chapter table of contents">
+    <a class="sidebar-back" href="../index.html#roadmap">Back to Roadmap</a>
+    <div class="sidebar-title">Chapter Contents</div>
+    <nav class="sidebar-toc">
+      <a href="#objectives">Learning Objectives</a>
+      <a href="#prerequisites">Prerequisites</a>
+      <a href="#topics-covered">Syllabus Topics</a>
+      <a href="#overview">Introduction</a>
+      <a href="#db-vs-file">DBMS vs File System</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#schema-instance">Schema &amp; Instances</a>
+      <a href="#independence">Data Independence</a>
+      <a href="#languages">Languages &amp; Interfaces</a>
+      <a href="#overall-structure">Overall Structure</a>
+      <a href="#terminologies">Terminologies</a>
+      <a href="#key-points">Key Points</a>
+      <a href="#revision">Quick Revision</a>
+      <a href="#practice">Practice</a>
+      <a href="#quiz">Self-Test Quiz</a>
+      <a href="#chapter-end">Chapter End</a>
+    </nav>
+  </aside>
+
+  <div class="chapter-content">
 
   <!-- 1. LEARNING OBJECTIVES -->
   <section class="topic-block" id="objectives">
@@ -86,9 +127,24 @@
     </ul>
   </section>
 
-  <!-- 2. TOPICS COVERED -->
-  <section class="topic-block" id="topics-covered">
+  <!-- 2. PREREQUISITES -->
+  <section class="topic-block" id="prerequisites">
     <div class="topic-kicker">Section 02</div>
+    <h2>Prerequisite Knowledge</h2>
+    <div class="callout callout-easy">
+      <div class="callout-label">&#9998; Before You Start</div>
+      <p><strong>No prerequisite required.</strong></p>
+      <p>
+        This is the first foundation chapter of DBMS. You only need basic computer awareness:
+        a file stores data, software runs on a computer, and users interact with applications.
+        Every DBMS term used in this chapter is explained from zero.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3. TOPICS COVERED -->
+  <section class="topic-block" id="topics-covered">
+    <div class="topic-kicker">Section 03</div>
     <h2>Syllabus Topics Covered</h2>
     <div class="syllabus-box">
       <div class="label">Unit I &mdash; Introduction (as printed in the syllabus)</div>
@@ -105,10 +161,19 @@
     </div>
   </section>
 
-  <!-- 3. OVERVIEW -->
+  <!-- 4. INTRODUCTION -->
   <section class="topic-block" id="overview">
-    <div class="topic-kicker">Section 03</div>
-    <h2>Overview of Database Systems</h2>
+    <div class="topic-kicker">Section 04</div>
+    <h2>Introduction</h2>
+
+    <div class="callout callout-easy">
+      <div class="callout-label">&#9998; Simple Definition</div>
+      <p>
+        A <strong>database system</strong> is a complete setup for storing, managing, protecting, and
+        retrieving related data using a DBMS. The database stores the data. The DBMS manages that data.
+        Users and applications access the data through the DBMS instead of touching raw files directly.
+      </p>
+    </div>
 
     <div class="callout callout-easy">
       <div class="callout-label">&#9998; Very Easy Explanation</div>
@@ -769,9 +834,49 @@
     </div>
   </section>
 
+  <!-- 10. IMPORTANT TERMINOLOGIES -->
+  <section class="topic-block" id="terminologies">
+    <div class="topic-kicker">Section 10</div>
+    <h2>Important Terminologies</h2>
+    <p>These words appear repeatedly in database questions. Learn the meaning, not just the spelling.</p>
+    <div class="term-grid">
+      <div class="term-card"><h3>Data</h3><p>Raw facts such as names, marks, dates, prices, or account numbers.</p></div>
+      <div class="term-card"><h3>Information</h3><p>Data arranged in a meaningful way, such as "Asha scored 82 marks in DBMS".</p></div>
+      <div class="term-card"><h3>Database</h3><p>An organised collection of related data stored for easy access and update.</p></div>
+      <div class="term-card"><h3>DBMS</h3><p>Software that creates, stores, retrieves, updates, protects, and manages a database.</p></div>
+      <div class="term-card"><h3>File System</h3><p>A storage method where each application directly manages its own files.</p></div>
+      <div class="term-card"><h3>Metadata</h3><p>Data about data, such as table names, column names, data types, and constraints.</p></div>
+      <div class="term-card"><h3>Schema</h3><p>The structure or design of the database. It changes rarely.</p></div>
+      <div class="term-card"><h3>Instance</h3><p>The actual data stored in the database at a particular moment.</p></div>
+      <div class="term-card"><h3>Data Model</h3><p>A set of concepts used to describe how data, relationships, and rules are represented.</p></div>
+      <div class="term-card"><h3>Data Independence</h3><p>The ability to change one level of database design without forcing changes at another level.</p></div>
+      <div class="term-card"><h3>DDL</h3><p>Data Definition Language. Commands that define or change database structure.</p></div>
+      <div class="term-card"><h3>DML</h3><p>Data Manipulation Language. Commands that retrieve or modify the stored data.</p></div>
+      <div class="term-card"><h3>Query Processor</h3><p>The DBMS component that understands and prepares user queries for execution.</p></div>
+      <div class="term-card"><h3>Storage Manager</h3><p>The DBMS component that manages actual reading and writing of data on storage.</p></div>
+      <div class="term-card"><h3>Data Dictionary</h3><p>A system catalog that stores metadata about the database structure.</p></div>
+    </div>
+  </section>
+
+  <!-- 11. KEY POINTS -->
+  <section class="topic-block" id="key-points">
+    <div class="topic-kicker">Section 11</div>
+    <h2>Key Points</h2>
+    <ul class="exam-list">
+      <li>A database system exists because raw files become difficult to manage when data grows and many users access it.</li>
+      <li>A DBMS reduces redundancy, inconsistency, difficult access, isolation, integrity problems, atomicity problems, concurrency anomalies, and weak security.</li>
+      <li>The three-level architecture separates user views, logical design, and physical storage.</li>
+      <li>Schema means structure; instance means current data.</li>
+      <li>Physical data independence is related to internal-level changes; logical data independence is related to conceptual-level changes.</li>
+      <li>DDL defines structure. DML works with stored data.</li>
+      <li>The query processor handles the user request; the storage manager handles disk-level data access.</li>
+      <li>The data dictionary stores metadata, not ordinary user records.</li>
+    </ul>
+  </section>
+
   <!-- 10. MEMORY TRICKS -->
   <section class="topic-block" id="memory-tricks">
-    <div class="topic-kicker">Section 10</div>
+    <div class="topic-kicker">Section 12</div>
     <h2>Memory Tricks</h2>
     <div class="callout callout-trick">
       <div class="callout-label">&#128161; Trick 1 — The 3 Levels</div>
@@ -921,9 +1026,12 @@
   </section>
 
   <nav class="chapter-nav">
-    <a class="chapter-nav-btn disabled" href="#"><span class="dir">&larr; PREVIOUS</span>You're at the start</a>
-    <a class="chapter-nav-btn disabled" href="#"><span class="dir">NEXT &rarr;</span>Chapter 2 — coming soon</a>
+    <a class="chapter-nav-btn disabled" href="#"><span class="dir">Previous Chapter</span>You're at the start</a>
+    <a class="chapter-nav-btn" href="../index.html#roadmap"><span class="dir">Course Roadmap</span>Back to Unit 1 roadmap</a>
+    <a class="chapter-nav-btn disabled" href="#"><span class="dir">Next Chapter</span>Chapter 2 coming soon</a>
   </nav>
+
+  </div>
 
 </main>
 

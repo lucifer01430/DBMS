@@ -3,6 +3,7 @@
    ============================================================ */
 
 const CHAPTER_ID = 1;
+const COLLAPSE_KEY = "dbms_course_ch1_collapsed_sections_v1";
 
 /* ---------- FAQ ---------- */
 
@@ -232,9 +233,114 @@ function initMarkComplete() {
   });
 }
 
+/* ---------- READING EXPERIENCE ---------- */
+
+function initReadingProgress() {
+  const fill = document.getElementById("reading-progress-fill");
+  if (!fill) return;
+
+  const update = () => {
+    const doc = document.documentElement;
+    const scrollTop = doc.scrollTop || document.body.scrollTop;
+    const scrollable = doc.scrollHeight - doc.clientHeight;
+    const pct = scrollable > 0 ? Math.min(100, Math.max(0, (scrollTop / scrollable) * 100)) : 0;
+    fill.style.width = `${pct}%`;
+  };
+
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+}
+
+function initEstimatedReadingTime() {
+  const target = document.getElementById("reading-time");
+  const content = document.querySelector(".chapter-content");
+  if (!target || !content) return;
+
+  const words = content.innerText.trim().split(/\s+/).filter(Boolean).length;
+  const minutes = Math.max(1, Math.ceil(words / 180));
+  target.textContent = `Estimated read: ${minutes} min`;
+}
+
+function loadCollapsedSections() {
+  try {
+    const raw = localStorage.getItem(COLLAPSE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) {
+    return {};
+  }
+}
+
+function saveCollapsedSections(state) {
+  localStorage.setItem(COLLAPSE_KEY, JSON.stringify(state));
+}
+
+function initCollapsibleSections() {
+  const saved = loadCollapsedSections();
+  document.querySelectorAll(".topic-block[id]").forEach((section) => {
+    const heading = section.querySelector("h2");
+    if (!heading || section.querySelector(".topic-content")) return;
+
+    const content = document.createElement("div");
+    content.className = "topic-content";
+    let node = heading.nextSibling;
+    while (node) {
+      const next = node.nextSibling;
+      content.appendChild(node);
+      node = next;
+    }
+    section.appendChild(content);
+    section.classList.add("is-collapsible");
+
+    const btn = document.createElement("button");
+    btn.className = "section-toggle";
+    btn.type = "button";
+    btn.textContent = "⌄";
+    btn.setAttribute("aria-label", `Toggle ${heading.textContent.trim()}`);
+    heading.appendChild(btn);
+
+    if (saved[section.id]) section.classList.add("is-collapsed");
+
+    btn.addEventListener("click", () => {
+      const state = loadCollapsedSections();
+      const collapsed = section.classList.toggle("is-collapsed");
+      state[section.id] = collapsed;
+      saveCollapsedSections(state);
+    });
+  });
+}
+
+function initActiveToc() {
+  const links = Array.from(document.querySelectorAll(".sidebar-toc a"));
+  if (!links.length) return;
+
+  const byId = new Map(
+    links.map((link) => [decodeURIComponent(link.getAttribute("href").slice(1)), link])
+  );
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      links.forEach((link) => link.classList.remove("active"));
+      const active = byId.get(visible.target.id);
+      if (active) active.classList.add("active");
+    },
+    { rootMargin: "-18% 0px -68% 0px", threshold: [0.1, 0.35, 0.7] }
+  );
+
+  document.querySelectorAll(".topic-block[id]").forEach((section) => observer.observe(section));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   renderFAQs();
   renderQuiz();
   renderChecklist();
   initMarkComplete();
+  initEstimatedReadingTime();
+  initCollapsibleSections();
+  initReadingProgress();
+  initActiveToc();
 });
