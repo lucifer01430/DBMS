@@ -14,7 +14,7 @@
 #reading-progress-fill {
   width: 0%;
   height: 100%;
-  background: linear-gradient(90deg, var(--teal), var(--accent));
+  background: linear-gradient(90deg, var(--primary), var(--accent));
   box-shadow: 0 0 18px var(--accent-dim);
   transition: width 0.08s linear;
 }
@@ -66,7 +66,7 @@
   min-height: 38px;
   border-radius: 10px;
   background: var(--accent);
-  color: #1a1400;
+  color: var(--on-accent);
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 700;
@@ -153,14 +153,14 @@
 .obj-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
 .obj-list li {
   display: flex; gap: 10px; align-items: flex-start; color: var(--text-dim);
-  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 14px;
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 14px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.07);
 }
 .obj-list li::before { content: "\2192"; color: var(--accent); font-weight: 700; }
 
 /* Syllabus mapping box */
 .syllabus-box {
-  background: var(--surface-2); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+  background: var(--callout-bg); border: 1px solid var(--border); border-left: 3px solid var(--accent);
   border-radius: var(--radius-sm); padding: 16px 18px; margin: 0;
 }
 .syllabus-box .label { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
@@ -169,7 +169,7 @@
 /* Callout / definition boxes */
 .callout {
   border-radius: var(--radius); padding: 18px 20px; margin: 20px 0;
-  border: 1px solid var(--border); background: var(--surface);
+  border: 1px solid var(--border); background: var(--callout-bg);
   box-shadow: 0 10px 26px rgba(0,0,0,0.08);
 }
 .callout-label {
@@ -180,15 +180,15 @@
 .callout-easy .callout-label { color: var(--teal); }
 .callout-why { border-left: 3px solid var(--accent); }
 .callout-why .callout-label { color: var(--accent); }
-.callout-support { border-left: 3px solid var(--danger); background: rgba(224,101,79,0.06); }
+.callout-support { border-left: 3px solid var(--danger); background: color-mix(in srgb, var(--danger) 8%, var(--callout-bg)); }
 .callout-support .callout-label { color: var(--danger); }
-.callout-mistake { border-left: 3px solid var(--danger); background: rgba(224,101,79,0.05); }
+.callout-mistake { border-left: 3px solid var(--danger); background: color-mix(in srgb, var(--danger) 7%, var(--callout-bg)); }
 .callout-mistake .callout-label { color: var(--danger); }
-.callout-analogy { border-left: 3px solid var(--teal); background: rgba(79,209,197,0.05); }
+.callout-analogy { border-left: 3px solid var(--teal); background: color-mix(in srgb, var(--teal) 7%, var(--callout-bg)); }
 .callout-analogy .callout-label { color: var(--teal); }
 .callout-example { border-left: 3px solid var(--text-faint); }
 .callout-example .callout-label { color: var(--text-dim); }
-.callout-trick { border-left: 3px solid var(--accent); background: rgba(233,180,76,0.06); }
+.callout-trick { border-left: 3px solid var(--warning); background: color-mix(in srgb, var(--warning) 8%, var(--callout-bg)); }
 .callout-trick .callout-label { color: var(--accent); }
 .callout p:last-child { margin-bottom: 0; }
 
@@ -308,7 +308,7 @@
   height: 3px;
   flex: 0 0 28px;
   border-radius: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--teal));
+  background: linear-gradient(90deg, var(--primary), var(--accent));
 }
 
 .visual-note {
@@ -349,7 +349,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 15px;
-  background: var(--surface);
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
 }
@@ -406,8 +406,8 @@
 .sql-example {
   margin: 16px 0;
   overflow: hidden;
-  background: #11151b;
-  border: 1px solid color-mix(in srgb, var(--accent) 34%, #26303b);
+  background: var(--code-bg);
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--border));
   border-radius: var(--radius);
   box-shadow: 0 14px 30px rgba(0,0,0,0.16);
 }
@@ -417,23 +417,23 @@
   justify-content: space-between;
   gap: 12px;
   padding: 9px 14px;
-  color: #9aa8b8;
-  background: #171d25;
-  border-bottom: 1px solid #29323d;
+  color: var(--text-faint);
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border-soft);
   font-family: var(--font-mono);
   font-size: 0.7rem;
 }
-.sql-dots { color: #e9b44c; letter-spacing: 0.2em; }
+.sql-dots { color: var(--warning); letter-spacing: 0.2em; }
 .sql-example pre {
   margin: 0;
   padding: 17px;
   overflow-x: auto;
-  color: #d8e2ec;
+  color: var(--text-dim);
   font: 0.82rem/1.75 var(--font-mono);
 }
-.sql-keyword { color: #77d7cc; }
-.sql-value { color: #f0c674; }
-.sql-comment { color: #788797; }
+.sql-keyword { color: var(--primary); }
+.sql-value { color: var(--warning); }
+.sql-comment { color: var(--text-faint); }
 
 .exam-angle {
   display: grid;
@@ -507,9 +507,9 @@
   border-radius: var(--radius);
 }
 .data-table th, .data-table td { border: 1px solid var(--border); padding: 9px 12px; text-align: left; }
-.data-table th { background: var(--surface-2); font-family: var(--font-mono); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-dim); }
+.data-table th { background: var(--table-head); font-family: var(--font-mono); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-dim); }
 .data-table td { color: var(--text-dim); }
-.data-table tr:hover td { background: var(--bg-raise); }
+.data-table tr:hover td { background: var(--surface-hover); }
 
 /* Exam points */
 .exam-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
@@ -560,8 +560,8 @@
   transition: border-color 0.15s ease;
 }
 .quiz-opt:hover { border-color: var(--text-dim); transform: translateX(2px); }
-.quiz-opt.correct { border-color: var(--teal); background: rgba(79,209,197,0.1); color: var(--teal); }
-.quiz-opt.wrong { border-color: var(--danger); background: rgba(224,101,79,0.1); color: var(--danger); }
+.quiz-opt.correct { border-color: var(--success); background: color-mix(in srgb, var(--success) 10%, var(--surface)); color: var(--success); }
+.quiz-opt.wrong { border-color: var(--danger); background: color-mix(in srgb, var(--danger) 10%, var(--surface)); color: var(--danger); }
 .quiz-opt:disabled { cursor: default; }
 .quiz-result-bar {
   display: flex; align-items: center; justify-content: space-between;
