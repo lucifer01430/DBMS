@@ -240,6 +240,76 @@
       part of the same question: <strong>how can data be stored and used safely by many people?</strong>
     </p>
 
+    <div class="concept-lens" aria-label="Database system concept overview">
+      <div class="lens-card" data-step="01">
+        <span class="lens-label">What?</span>
+        <p>A database system combines stored data, DBMS software, users, applications, rules, and storage.</p>
+      </div>
+      <div class="lens-card" data-step="02">
+        <span class="lens-label">Why?</span>
+        <p>To keep one dependable version of data that many users can search and update safely.</p>
+      </div>
+      <div class="lens-card" data-step="03">
+        <span class="lens-label">How?</span>
+        <p>Applications send requests to the DBMS; the DBMS checks rules, finds data, and returns results.</p>
+      </div>
+      <div class="lens-card" data-step="04">
+        <span class="lens-label">Where used?</span>
+        <p>Banking, colleges, railways, hospitals, shopping systems, messaging apps, and nearly every data-driven service.</p>
+      </div>
+    </div>
+
+    <h3 class="visual-title">Visual Relationship: Data to Useful Result</h3>
+    <div class="diagram-frame">
+      <svg viewBox="0 0 760 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Relationship between data, database, DBMS, application, and user">
+        <rect x="20" y="84" width="125" height="78" rx="10" style="fill:var(--surface-2);stroke:var(--text-faint)"/>
+        <text x="82" y="112" text-anchor="middle" style="font:700 13px monospace;fill:var(--text)">RAW DATA</text>
+        <text x="82" y="134" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">101 · Aditi · 88</text>
+        <text x="82" y="150" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">facts without context</text>
+
+        <line x1="145" y1="123" x2="194" y2="123" style="stroke:var(--border)" marker-end="url(#introArrow)"/>
+        <text x="170" y="110" text-anchor="middle" style="font:9px monospace;fill:var(--text-faint)">organise</text>
+
+        <rect x="196" y="72" width="135" height="102" rx="10" style="fill:var(--bg-raise);stroke:var(--teal)"/>
+        <text x="263" y="105" text-anchor="middle" style="font:700 13px monospace;fill:var(--teal)">DATABASE</text>
+        <text x="263" y="127" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">related facts</text>
+        <text x="263" y="143" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">stored together</text>
+
+        <path d="M331 100 C362 62, 388 62, 419 100" fill="none" style="stroke:var(--accent)" marker-end="url(#introAccent)"/>
+        <path d="M419 146 C388 184, 362 184, 331 146" fill="none" style="stroke:var(--accent)" marker-end="url(#introAccent)"/>
+        <text x="375" y="57" text-anchor="middle" style="font:9px monospace;fill:var(--accent)">reads / writes</text>
+        <text x="375" y="203" text-anchor="middle" style="font:9px monospace;fill:var(--accent)">stored result</text>
+
+        <rect x="421" y="72" width="135" height="102" rx="10" style="fill:var(--surface-2);stroke:var(--accent)"/>
+        <text x="488" y="105" text-anchor="middle" style="font:700 13px monospace;fill:var(--accent)">DBMS</text>
+        <text x="488" y="127" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">manages access</text>
+        <text x="488" y="143" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">checks rules</text>
+
+        <line x1="556" y1="123" x2="605" y2="123" style="stroke:var(--border)" marker-end="url(#introArrow)"/>
+        <text x="581" y="110" text-anchor="middle" style="font:9px monospace;fill:var(--text-faint)">result</text>
+
+        <rect x="607" y="84" width="133" height="78" rx="10" style="fill:var(--surface-2);stroke:var(--teal)"/>
+        <text x="673" y="112" text-anchor="middle" style="font:700 13px monospace;fill:var(--teal)">INFORMATION</text>
+        <text x="673" y="134" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">"Aditi scored 88"</text>
+        <text x="673" y="150" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">meaningful result</text>
+
+        <rect x="426" y="10" width="125" height="32" rx="16" style="fill:var(--surface);stroke:var(--border)"/>
+        <text x="488" y="30" text-anchor="middle" style="font:10px monospace;fill:var(--text)">App / User Query</text>
+        <line x1="488" y1="42" x2="488" y2="70" style="stroke:var(--border)" marker-end="url(#introArrow)"/>
+
+        <defs>
+          <marker id="introArrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" style="fill:var(--text-faint)"/></marker>
+          <marker id="introAccent" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" style="fill:var(--accent)"/></marker>
+        </defs>
+      </svg>
+      <div class="diagram-caption">Fig 1.1 — A DBMS is the controlled bridge between stored data and useful information</div>
+    </div>
+
+    <div class="visual-note">
+      <div class="visual-note-icon">KEY</div>
+      <p><strong>The user never asks the database file directly.</strong> The request always passes through the DBMS. This controlled middle layer is what makes validation, security, sharing, and reliable retrieval possible.</p>
+    </div>
+
     <h3>Step-by-Step: What Actually Happens When You "Use" a Database</h3>
     <ol class="step-list">
       <li><strong>You make a request.</strong> Example: you open a college portal and click "Show my attendance".</li>
@@ -294,6 +364,18 @@
         data. MySQL is a DBMS. The actual "College_Records" you build inside MySQL is the database.
       </p>
     </div>
+
+    <div class="exam-angle">
+      <div class="angle-card">
+        <h4>Exam perspective</h4>
+        <p>Begin with separate definitions of data, database, DBMS, and database system. Then use one connected example so the examiner can see that you understand their relationship.</p>
+      </div>
+      <div class="angle-card">
+        <h4>Interview perspective</h4>
+        <p>A strong short answer is: the database is the organised data; the DBMS is the controlled software layer through which applications store, validate, retrieve, and protect it.</p>
+      </div>
+    </div>
+    <div class="section-takeaway"><span>Section takeaway</span><p>A database stores related facts; a DBMS is the controlled path that turns those facts into reliable information for users and applications.</p></div>
   </section>
 
   <!-- 4. DB vs FILE SYSTEM -->
@@ -331,6 +413,62 @@
       <li><strong>Security Problems:</strong> File systems typically protect data only at the whole-file level &mdash; you can't easily say "this user may see Name and Marks, but not Salary" the way a DBMS can.</li>
     </ol>
 
+    <h3 class="visual-title">Cause-and-Effect Chain: How One Duplicate Becomes a System Problem</h3>
+    <div class="diagram-frame compact">
+      <svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flowchart showing how duplicate file data leads to inconsistency and wrong decisions">
+        <rect x="22" y="86" width="126" height="72" rx="9" style="fill:var(--surface-2);stroke:var(--text-faint)"/>
+        <text x="85" y="113" text-anchor="middle" style="font:700 11px monospace;fill:var(--text)">ONE FACT</text>
+        <text x="85" y="133" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">Phone = 9811...</text>
+
+        <line x1="148" y1="122" x2="194" y2="122" style="stroke:var(--border)" marker-end="url(#fileChain)"/>
+        <rect x="196" y="60" width="138" height="124" rx="9" style="fill:var(--surface);stroke:var(--danger)"/>
+        <text x="265" y="86" text-anchor="middle" style="font:700 11px monospace;fill:var(--danger)">COPIED FILES</text>
+        <text x="265" y="109" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">fees.dat</text>
+        <text x="265" y="129" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">exam.dat</text>
+        <text x="265" y="149" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">hostel.dat</text>
+        <text x="265" y="170" text-anchor="middle" style="font:9px monospace;fill:var(--danger)">REDUNDANCY</text>
+
+        <line x1="334" y1="122" x2="380" y2="122" style="stroke:var(--border)" marker-end="url(#fileChain)"/>
+        <rect x="382" y="72" width="140" height="100" rx="9" style="fill:var(--surface-2);stroke:var(--accent)"/>
+        <text x="452" y="99" text-anchor="middle" style="font:700 11px monospace;fill:var(--accent)">PARTIAL UPDATE</text>
+        <text x="452" y="121" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">only fees.dat</text>
+        <text x="452" y="140" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">gets new number</text>
+        <text x="452" y="159" text-anchor="middle" style="font:9px monospace;fill:var(--accent)">HUMAN ERROR</text>
+
+        <line x1="522" y1="122" x2="568" y2="122" style="stroke:var(--border)" marker-end="url(#fileChain)"/>
+        <rect x="570" y="60" width="128" height="124" rx="9" style="fill:var(--surface);stroke:var(--danger)"/>
+        <text x="634" y="86" text-anchor="middle" style="font:700 11px monospace;fill:var(--danger)">TWO TRUTHS</text>
+        <text x="634" y="109" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">old number</text>
+        <text x="634" y="129" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">new number</text>
+        <text x="634" y="150" text-anchor="middle" style="font:9px monospace;fill:var(--danger)">INCONSISTENCY</text>
+        <text x="634" y="168" text-anchor="middle" style="font:9px monospace;fill:var(--danger)">wrong decisions</text>
+
+        <text x="360" y="222" text-anchor="middle" style="font:600 10px monospace;fill:var(--teal)">DBMS breaks this chain by storing one controlled copy shared by all applications.</text>
+        <defs><marker id="fileChain" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" style="fill:var(--text-faint)"/></marker></defs>
+      </svg>
+      <div class="diagram-caption">Fig 1.2 — Redundancy is the cause; inconsistency is one of its most dangerous effects</div>
+    </div>
+
+    <div class="scenario-strip" aria-label="Concurrent update scenario">
+      <div class="scenario-step">
+        <span>Initial value</span>
+        <strong>Seat count = 1</strong>
+        <p>Two booking counters read the same file at nearly the same time.</p>
+      </div>
+      <div class="scenario-arrow" aria-hidden="true">&rarr;</div>
+      <div class="scenario-step">
+        <span>Unsafe action</span>
+        <strong>Both sell the seat</strong>
+        <p>Each program believes one seat is available and writes its own update.</p>
+      </div>
+      <div class="scenario-arrow" aria-hidden="true">&rarr;</div>
+      <div class="scenario-step">
+        <span>Wrong result</span>
+        <strong>Two tickets, one seat</strong>
+        <p>This is a concurrent-access anomaly; controlled DBMS access prevents it.</p>
+      </div>
+    </div>
+
     <div class="diagram-frame">
       <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram comparing file system silos with a single shared database">
         <text x="170" y="26" text-anchor="middle" style="font:600 13px monospace;fill:var(--text-dim)">FILE SYSTEM (Old Way)</text>
@@ -367,7 +505,7 @@
           <marker id="arrowAccent" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" style="fill:var(--accent)"/></marker>
         </defs>
       </svg>
-      <div class="diagram-caption">Fig 1.1 — File system silos vs a single shared database</div>
+      <div class="diagram-caption">Fig 1.3 — File system silos vs a single shared database</div>
     </div>
 
     <h3>Comparison Table</h3>
@@ -415,6 +553,18 @@
         (can restrict access down to a specific column or row).
       </p>
     </div>
+
+    <div class="exam-angle">
+      <div class="angle-card">
+        <h4>Exam perspective</h4>
+        <p>For a 5-mark comparison, define both systems first, draw two small architectures, and explain at least five paired differences rather than writing isolated keywords.</p>
+      </div>
+      <div class="angle-card">
+        <h4>Interview perspective</h4>
+        <p>Use one concrete chain: duplicated customer address &rarr; one copy updated &rarr; inconsistent records &rarr; DBMS provides one controlled source.</p>
+      </div>
+    </div>
+    <div class="section-takeaway"><span>Section takeaway</span><p>File systems make each application responsible for its own data. A DBMS centralises that responsibility so shared data can remain consistent, controlled, and dependable.</p></div>
   </section>
 
   <!-- 5. ARCHITECTURE -->
@@ -426,6 +576,25 @@
       done using the <strong>three-level (ANSI-SPARC) architecture</strong>, proposed by the ANSI/SPARC
       Study Group to make database systems flexible instead of rigid.
     </p>
+
+    <div class="concept-lens" aria-label="Three-level architecture concept overview">
+      <div class="lens-card" data-step="01">
+        <span class="lens-label">What?</span>
+        <p>A three-layer description of the same database: user views, complete logical design, and physical storage.</p>
+      </div>
+      <div class="lens-card" data-step="02">
+        <span class="lens-label">Why?</span>
+        <p>Users should not depend on disk details, and one user should not need to see every stored field.</p>
+      </div>
+      <div class="lens-card" data-step="03">
+        <span class="lens-label">How?</span>
+        <p>Mappings translate requests between external, conceptual, and internal schemas.</p>
+      </div>
+      <div class="lens-card" data-step="04">
+        <span class="lens-label">Result</span>
+        <p>Different views remain simple while the DBA can change storage without disturbing users.</p>
+      </div>
+    </div>
 
     <div class="callout callout-analogy">
       <div class="callout-label">&#128161; Real-Life Analogy</div>
@@ -478,7 +647,33 @@
 
         <defs><marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" style="fill:var(--border)"/></marker></defs>
       </svg>
-      <div class="diagram-caption">Fig 1.2 — External, Conceptual and Internal levels, top to bottom</div>
+      <div class="diagram-caption">Fig 1.4 — External, Conceptual and Internal levels, top to bottom</div>
+    </div>
+
+    <h3>How a Request Moves Between the Levels</h3>
+    <div class="scenario-strip" aria-label="Mapping a student request through the three database architecture levels">
+      <div class="scenario-step">
+        <span>External</span>
+        <strong>"Show my marks"</strong>
+        <p>The student portal exposes only the fields needed by that student.</p>
+      </div>
+      <div class="scenario-arrow" aria-hidden="true">&rarr;</div>
+      <div class="scenario-step">
+        <span>Conceptual</span>
+        <strong>Find Student + Result</strong>
+        <p>The DBMS uses the overall logical relationships and rules of the college database.</p>
+      </div>
+      <div class="scenario-arrow" aria-hidden="true">&rarr;</div>
+      <div class="scenario-step">
+        <span>Internal</span>
+        <strong>Read stored blocks</strong>
+        <p>The engine locates the required bytes and sends the result back upward.</p>
+      </div>
+    </div>
+
+    <div class="visual-note">
+      <div class="visual-note-icon">MAP</div>
+      <p><strong>A mapping is a translation rule between two levels.</strong> External-conceptual mapping connects a user view to the logical database. Conceptual-internal mapping connects that logical design to its physical representation. These mappings let the same fact look different at different levels without becoming different data.</p>
     </div>
 
     <table class="data-table">
@@ -522,6 +717,18 @@
         view of the data, still fully inside the DBMS.
       </p>
     </div>
+
+    <div class="exam-angle">
+      <div class="angle-card">
+        <h4>Exam perspective</h4>
+        <p>Draw the levels top-to-bottom as External &rarr; Conceptual &rarr; Internal, label both mappings, then give one college-view example for each level.</p>
+      </div>
+      <div class="angle-card">
+        <h4>Interview perspective</h4>
+        <p>Explain the architecture as separation of concerns: user-specific views, one global logical design, and storage implementation that applications should not depend on.</p>
+      </div>
+    </div>
+    <div class="section-takeaway"><span>Section takeaway</span><p>The three levels describe the same database for three different concerns: what each user sees, what the complete database means, and how it is physically stored.</p></div>
   </section>
 
   <!-- 6. SCHEMA / INSTANCE -->
@@ -560,6 +767,39 @@
       </p>
     </div>
 
+    <h3 class="visual-title">From Modeling Language to Live Data</h3>
+    <div class="diagram-frame">
+      <svg viewBox="0 0 760 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Relationship diagram for data model, schema, and instance">
+        <rect x="30" y="73" width="185" height="118" rx="12" style="fill:var(--surface-2);stroke:var(--accent)"/>
+        <text x="122" y="102" text-anchor="middle" style="font:700 13px monospace;fill:var(--accent)">DATA MODEL</text>
+        <text x="122" y="126" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">available design concepts</text>
+        <text x="122" y="146" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">tables · relationships</text>
+        <text x="122" y="166" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">constraints</text>
+
+        <line x1="215" y1="132" x2="281" y2="132" style="stroke:var(--border)" marker-end="url(#modelArrow)"/>
+        <text x="248" y="117" text-anchor="middle" style="font:9px monospace;fill:var(--text-faint)">used to design</text>
+
+        <rect x="283" y="73" width="194" height="118" rx="12" style="fill:var(--surface);stroke:var(--teal)"/>
+        <text x="380" y="102" text-anchor="middle" style="font:700 13px monospace;fill:var(--teal)">SCHEMA</text>
+        <text x="380" y="126" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">Student(Roll_No,</text>
+        <text x="380" y="146" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">Name, Marks)</text>
+        <text x="380" y="166" text-anchor="middle" style="font:9px monospace;fill:var(--teal)">one specific structure</text>
+
+        <line x1="477" y1="132" x2="543" y2="132" style="stroke:var(--border)" marker-end="url(#modelArrow)"/>
+        <text x="510" y="117" text-anchor="middle" style="font:9px monospace;fill:var(--text-faint)">filled with</text>
+
+        <rect x="545" y="73" width="185" height="118" rx="12" style="fill:var(--surface-2);stroke:var(--accent)"/>
+        <text x="637" y="102" text-anchor="middle" style="font:700 13px monospace;fill:var(--accent)">INSTANCE</text>
+        <text x="637" y="126" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">101 · Aditi · 88</text>
+        <text x="637" y="146" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">102 · Rohan · 76</text>
+        <text x="637" y="166" text-anchor="middle" style="font:9px monospace;fill:var(--accent)">current snapshot</text>
+
+        <text x="380" y="226" text-anchor="middle" style="font:600 10px monospace;fill:var(--text-dim)">MODEL = vocabulary &nbsp;·&nbsp; SCHEMA = design &nbsp;·&nbsp; INSTANCE = present values</text>
+        <defs><marker id="modelArrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" style="fill:var(--text-faint)"/></marker></defs>
+      </svg>
+      <div class="diagram-caption">Fig 1.5 — A data model provides concepts, a schema applies them, and an instance fills the schema with values</div>
+    </div>
+
     <h3>Schema vs Instance</h3>
     <p>This is one of the most commonly confused pairs in DBMS &mdash; and a favourite exam question.</p>
     <div class="example-grid">
@@ -585,6 +825,29 @@
       The <strong>rows</strong> (101, Aditi, 88) are one <strong>instance</strong> — tomorrow, after new admissions, the instance changes, but the schema stays the same.
     </p>
 
+    <h3>Timeline: What Changes and What Stays Stable?</h3>
+    <div class="mini-table" aria-label="Schema and instance timeline">
+      <div class="mini-row mini-head"><span>Moment</span><span>Schema</span><span>Instance</span></div>
+      <div class="mini-row"><span>Monday, 9:00 AM</span><span>Roll_No, Name, Marks</span><span>2 student rows</span></div>
+      <div class="mini-row"><span>Monday, 2:00 PM</span><span>Roll_No, Name, Marks</span><span class="changed-cell">3 student rows after INSERT</span></div>
+      <div class="mini-row"><span>Tuesday, 10:00 AM</span><span class="changed-cell">Email column added</span><span class="changed-cell">3 rows, now with Email field</span></div>
+    </div>
+    <p>
+      At 2:00 PM only the <strong>instance</strong> changes because a row is added. On Tuesday the
+      <strong>schema changes</strong> because the shape of every student record gains a new field. The
+      existing rows still belong to the instance; they are simply represented under the new structure.
+    </p>
+
+    <div class="callout callout-why">
+      <div class="callout-label">&#9889; Why This Distinction Exists</div>
+      <p>
+        Designers need a stable description they can discuss, validate, and build applications against,
+        even while real data changes every minute. Calling the stable design <strong>schema</strong> and the
+        changing snapshot <strong>instance</strong> prevents us from confusing a structural change with an
+        ordinary data update.
+      </p>
+    </div>
+
     <h3>Second Example — Library Book Register</h3>
     <p>
       A library database has a schema: <code>Book(Book_ID int, Title varchar, Author varchar, Available boolean)</code>.
@@ -602,6 +865,18 @@
         matters for full marks.
       </p>
     </div>
+
+    <div class="exam-angle">
+      <div class="angle-card">
+        <h4>Exam perspective</h4>
+        <p>Write the definition pair, draw one table, label its headers as schema and all current rows as instance, then state that schema changes rarely while instance changes frequently.</p>
+      </div>
+      <div class="angle-card">
+        <h4>Interview perspective</h4>
+        <p>Answer with an operation: adding a row changes the instance; adding a column changes the schema. This proves understanding faster than memorised definitions.</p>
+      </div>
+    </div>
+    <div class="section-takeaway"><span>Section takeaway</span><p>A data model supplies design concepts, a schema is one structure built with those concepts, and an instance is the changing data currently held by that structure.</p></div>
   </section>
 
   <!-- 7. DATA INDEPENDENCE -->
@@ -613,6 +888,25 @@
       without having to change the schema at the next higher level. It's the entire reason the three-level
       architecture exists.
     </p>
+
+    <div class="concept-lens" aria-label="Data independence concept overview">
+      <div class="lens-card" data-step="01">
+        <span class="lens-label">What?</span>
+        <p>Freedom to change a lower database level without forcing changes in the level above it.</p>
+      </div>
+      <div class="lens-card" data-step="02">
+        <span class="lens-label">Why?</span>
+        <p>Applications should survive storage upgrades and reasonable logical design changes.</p>
+      </div>
+      <div class="lens-card" data-step="03">
+        <span class="lens-label">How?</span>
+        <p>Mappings absorb lower-level changes while preserving the structure expected above.</p>
+      </div>
+      <div class="lens-card" data-step="04">
+        <span class="lens-label">Where used?</span>
+        <p>Adding an index, moving files, adding fields, or reorganising logical structures.</p>
+      </div>
+    </div>
 
     <div class="callout callout-analogy">
       <div class="callout-label">&#128161; Real-Life Analogy</div>
@@ -640,6 +934,43 @@
         </tr>
       </tbody>
     </table>
+
+    <h3 class="visual-title">Two Boundaries, Two Types of Independence</h3>
+    <div class="diagram-frame compact">
+      <svg viewBox="0 0 700 390" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Relationship diagram showing physical and logical data independence boundaries">
+        <rect x="190" y="28" width="320" height="58" rx="11" style="fill:var(--surface-2);stroke:var(--teal)"/>
+        <text x="350" y="53" text-anchor="middle" style="font:700 13px monospace;fill:var(--teal)">EXTERNAL SCHEMAS</text>
+        <text x="350" y="72" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">student view · teacher view · fees view</text>
+
+        <rect x="70" y="109" width="560" height="44" rx="9" style="fill:color-mix(in srgb, var(--teal) 8%, var(--surface));stroke:var(--teal)" stroke-dasharray="5 4"/>
+        <text x="350" y="128" text-anchor="middle" style="font:700 10px monospace;fill:var(--teal)">LOGICAL DATA INDEPENDENCE</text>
+        <text x="350" y="144" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">conceptual changes should not break external views</text>
+
+        <line x1="350" y1="86" x2="350" y2="108" style="stroke:var(--border)"/>
+        <line x1="350" y1="153" x2="350" y2="177" style="stroke:var(--border)"/>
+        <rect x="190" y="178" width="320" height="58" rx="11" style="fill:var(--surface-2);stroke:var(--accent)"/>
+        <text x="350" y="203" text-anchor="middle" style="font:700 13px monospace;fill:var(--accent)">CONCEPTUAL SCHEMA</text>
+        <text x="350" y="222" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">tables · attributes · relationships · rules</text>
+
+        <rect x="70" y="259" width="560" height="44" rx="9" style="fill:color-mix(in srgb, var(--accent) 8%, var(--surface));stroke:var(--accent)" stroke-dasharray="5 4"/>
+        <text x="350" y="278" text-anchor="middle" style="font:700 10px monospace;fill:var(--accent)">PHYSICAL DATA INDEPENDENCE</text>
+        <text x="350" y="294" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">internal changes should not alter the conceptual schema</text>
+
+        <line x1="350" y1="236" x2="350" y2="258" style="stroke:var(--border)"/>
+        <line x1="350" y1="303" x2="350" y2="327" style="stroke:var(--border)"/>
+        <rect x="190" y="328" width="320" height="46" rx="11" style="fill:var(--surface-2);stroke:var(--text-faint)"/>
+        <text x="350" y="348" text-anchor="middle" style="font:700 12px monospace;fill:var(--text)">INTERNAL SCHEMA</text>
+        <text x="350" y="365" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">files · blocks · indexes · storage devices</text>
+      </svg>
+      <div class="diagram-caption">Fig 1.6 — Name the independence by the lower level that changes</div>
+    </div>
+
+    <h3>A Reliable Three-Step Test</h3>
+    <ol class="step-list">
+      <li><strong>Identify exactly what changed.</strong> Was it a storage detail such as an index or a logical detail such as a column?</li>
+      <li><strong>Locate that change in the architecture.</strong> Storage detail means internal level; table design means conceptual level.</li>
+      <li><strong>Ask which level must remain unaffected.</strong> Internal &rarr; conceptual gives physical independence. Conceptual &rarr; external gives logical independence.</li>
+    </ol>
 
     <div class="callout callout-support">
       <div class="callout-label">Supporting Concept</div>
@@ -675,6 +1006,18 @@
         should not disturb the level right above it".
       </p>
     </div>
+
+    <div class="exam-angle">
+      <div class="angle-card">
+        <h4>Exam perspective</h4>
+        <p>Define data independence first, then present physical and logical independence in a comparison table with changed level, protected level, example, and relative difficulty.</p>
+      </div>
+      <div class="angle-card">
+        <h4>Interview perspective</h4>
+        <p>When given a scenario, classify the changed level before naming the type. This avoids guessing from words such as "physical server" that may appear in the story.</p>
+      </div>
+    </div>
+    <div class="section-takeaway"><span>Section takeaway</span><p>Physical independence hides internal changes from the conceptual level; logical independence hides conceptual changes from external views and is generally harder to achieve.</p></div>
   </section>
 
   <!-- 8. LANGUAGES & INTERFACES -->
@@ -682,6 +1025,25 @@
     <div class="topic-kicker">Section 09</div>
     <h2>Database Languages &amp; Interfaces</h2>
     <p>A DBMS provides specialised languages to talk to the database. Unit&nbsp;I focuses on two of them:</p>
+
+    <div class="concept-lens" aria-label="Database language concept overview">
+      <div class="lens-card" data-step="01">
+        <span class="lens-label">What?</span>
+        <p>DDL describes database structure; DML retrieves and changes the data stored in that structure.</p>
+      </div>
+      <div class="lens-card" data-step="02">
+        <span class="lens-label">Why?</span>
+        <p>Structure-changing work and day-to-day data work have different purposes and effects.</p>
+      </div>
+      <div class="lens-card" data-step="03">
+        <span class="lens-label">How?</span>
+        <p>Users or interfaces submit commands; the DBMS interprets them and performs the requested operation.</p>
+      </div>
+      <div class="lens-card" data-step="04">
+        <span class="lens-label">Where used?</span>
+        <p>Creating a student table, inserting marks, correcting a name, or retrieving a report.</p>
+      </div>
+    </div>
 
     <div class="callout callout-analogy">
       <div class="callout-label">&#128161; Real-Life Analogy</div>
@@ -701,6 +1063,30 @@
         <tr><td><strong>DML</strong></td><td>Data Manipulation Language</td><td>Works with the actual data inside that structure</td><td><code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code></td></tr>
       </tbody>
     </table>
+
+    <h3>Mini Worked Scenario: Build, Fill, Read</h3>
+    <div class="sql-example" aria-label="Small SQL example showing DDL and DML">
+      <div class="sql-head"><span>student_demo.sql</span><span class="sql-dots">&#9679; &#9679; &#9679;</span></div>
+      <pre><span class="sql-comment">-- Step 1: DDL creates the structure</span>
+<span class="sql-keyword">CREATE TABLE</span> Student (
+  Roll_No INT, Name VARCHAR(30), Marks INT
+);
+
+<span class="sql-comment">-- Step 2: DML adds an instance row</span>
+<span class="sql-keyword">INSERT INTO</span> Student <span class="sql-keyword">VALUES</span> (<span class="sql-value">101</span>, <span class="sql-value">'Aditi'</span>, <span class="sql-value">88</span>);
+
+<span class="sql-comment">-- Step 3: DML asks for useful information</span>
+<span class="sql-keyword">SELECT</span> Name, Marks <span class="sql-keyword">FROM</span> Student <span class="sql-keyword">WHERE</span> Marks &gt; <span class="sql-value">80</span>;</pre>
+    </div>
+    <div class="mini-table" aria-label="Result of the small SQL query">
+      <div class="mini-row mini-head"><span>Query result</span><span>Name</span><span>Marks</span></div>
+      <div class="mini-row"><span>1 matching row</span><span>Aditi</span><span>88</span></div>
+    </div>
+    <p>
+      The first statement changes the <strong>schema</strong>. The second changes the
+      <strong>instance</strong>. The third reads the instance and produces information without changing
+      either the schema or the stored rows.
+    </p>
 
     <h3>Seeing DDL and DML Side by Side</h3>
     <p>You'll study SQL syntax in full detail from Unit&nbsp;II, but seeing it once here makes the DDL/DML difference concrete instead of abstract:</p>
@@ -738,7 +1124,7 @@
         <text x="569" y="103" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">fills / reads rows</text>
         <defs><marker id="a3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" style="fill:var(--border)"/></marker></defs>
       </svg>
-      <div class="diagram-caption">Fig 1.3 — DDL defines the container, DML operates on what's inside it</div>
+      <div class="diagram-caption">Fig 1.7 — DDL defines the container, DML operates on what's inside it</div>
     </div>
 
     <h3>Database Interfaces</h3>
@@ -758,6 +1144,49 @@
       </tbody>
     </table>
 
+    <h3 class="visual-title">One Database, Many Interfaces</h3>
+    <div class="diagram-frame">
+      <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Different database interfaces translating user actions into DBMS requests">
+        <rect x="20" y="34" width="146" height="48" rx="9" style="fill:var(--surface-2);stroke:var(--teal)"/>
+        <text x="93" y="55" text-anchor="middle" style="font:700 11px monospace;fill:var(--teal)">ATM MENU</text>
+        <text x="93" y="71" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">Balance enquiry</text>
+        <rect x="20" y="96" width="146" height="48" rx="9" style="fill:var(--surface-2);stroke:var(--teal)"/>
+        <text x="93" y="117" text-anchor="middle" style="font:700 11px monospace;fill:var(--teal)">WEB FORM</text>
+        <text x="93" y="133" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">Admission details</text>
+        <rect x="20" y="158" width="146" height="48" rx="9" style="fill:var(--surface-2);stroke:var(--teal)"/>
+        <text x="93" y="179" text-anchor="middle" style="font:700 11px monospace;fill:var(--teal)">GUI TOOL</text>
+        <text x="93" y="195" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">Visual table editor</text>
+        <rect x="20" y="220" width="146" height="48" rx="9" style="fill:var(--surface-2);stroke:var(--teal)"/>
+        <text x="93" y="241" text-anchor="middle" style="font:700 11px monospace;fill:var(--teal)">NATURAL LANGUAGE</text>
+        <text x="93" y="257" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">Plain-language request</text>
+
+        <line x1="166" y1="58" x2="278" y2="127" style="stroke:var(--border)" marker-end="url(#interfaceArrow)"/>
+        <line x1="166" y1="120" x2="278" y2="140" style="stroke:var(--border)" marker-end="url(#interfaceArrow)"/>
+        <line x1="166" y1="182" x2="278" y2="153" style="stroke:var(--border)" marker-end="url(#interfaceArrow)"/>
+        <line x1="166" y1="244" x2="278" y2="166" style="stroke:var(--border)" marker-end="url(#interfaceArrow)"/>
+
+        <rect x="280" y="103" width="188" height="90" rx="12" style="fill:var(--surface);stroke:var(--accent)"/>
+        <text x="374" y="132" text-anchor="middle" style="font:700 12px monospace;fill:var(--accent)">INTERFACE LAYER</text>
+        <text x="374" y="154" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">turns user action into</text>
+        <text x="374" y="174" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">a precise DBMS request</text>
+
+        <line x1="468" y1="148" x2="538" y2="148" style="stroke:var(--accent)" marker-end="url(#interfaceAccent)"/>
+        <text x="503" y="133" text-anchor="middle" style="font:9px monospace;fill:var(--accent)">DDL / DML</text>
+
+        <rect x="540" y="92" width="190" height="112" rx="12" style="fill:var(--surface-2);stroke:var(--teal)"/>
+        <text x="635" y="123" text-anchor="middle" style="font:700 13px monospace;fill:var(--teal)">DBMS</text>
+        <text x="635" y="148" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">validate · process</text>
+        <text x="635" y="168" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">read / update data</text>
+        <text x="635" y="188" text-anchor="middle" style="font:9px monospace;fill:var(--text-faint)">same engine for every interface</text>
+
+        <defs>
+          <marker id="interfaceArrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" style="fill:var(--text-faint)"/></marker>
+          <marker id="interfaceAccent" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" style="fill:var(--accent)"/></marker>
+        </defs>
+      </svg>
+      <div class="diagram-caption">Fig 1.8 — Interfaces differ for users, but all requests eventually reach the same DBMS</div>
+    </div>
+
     <div class="callout callout-mistake">
       <div class="callout-label">&#9888; Common Mistake</div>
       <p>
@@ -771,6 +1200,18 @@
       <div class="callout-label">&#128161; Memory Trick</div>
       <p><strong>"DDL Defines, DML Does."</strong> DDL = Define the structure. DML = Do something with the data.</p>
     </div>
+
+    <div class="exam-angle">
+      <div class="angle-card">
+        <h4>Exam perspective</h4>
+        <p>Classify each command by what it changes: structure means DDL; stored rows mean DML. Define interfaces separately and give one everyday example of each type.</p>
+      </div>
+      <div class="angle-card">
+        <h4>Interview perspective</h4>
+        <p>Do not merely list commands. Explain the effect: <code>ALTER</code> changes schema, while <code>UPDATE</code> changes values in the current instance.</p>
+      </div>
+    </div>
+    <div class="section-takeaway"><span>Section takeaway</span><p>DDL defines the container, DML works with its contents, and interfaces translate different user actions into requests the DBMS can process.</p></div>
   </section>
 
   <!-- 9. OVERALL STRUCTURE -->
@@ -778,6 +1219,25 @@
     <div class="topic-kicker">Section 10</div>
     <h2>Overall Database Structure</h2>
     <p>Zooming out, here is how all the pieces of a DBMS fit together, from the user typing a query to the data sitting on disk.</p>
+
+    <div class="concept-lens" aria-label="Overall DBMS structure concept overview">
+      <div class="lens-card" data-step="01">
+        <span class="lens-label">Input</span>
+        <p>A user or application submits a DDL or DML request through an interface.</p>
+      </div>
+      <div class="lens-card" data-step="02">
+        <span class="lens-label">Understand</span>
+        <p>The query processor checks meaning and prepares an efficient way to perform the request.</p>
+      </div>
+      <div class="lens-card" data-step="03">
+        <span class="lens-label">Access</span>
+        <p>The storage manager coordinates memory, files, and the operating system to reach stored data.</p>
+      </div>
+      <div class="lens-card" data-step="04">
+        <span class="lens-label">Output</span>
+        <p>The DBMS returns rows, confirms an update, or records a structural definition.</p>
+      </div>
+    </div>
 
     <div class="callout callout-analogy">
       <div class="callout-label">&#128161; Real-Life Analogy</div>
@@ -830,7 +1290,43 @@
 
         <defs><marker id="a4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" style="fill:var(--border)"/></marker></defs>
       </svg>
-      <div class="diagram-caption">Fig 1.4 — Query Processor and Storage Manager are the two engines inside every DBMS</div>
+      <div class="diagram-caption">Fig 1.9 — Query Processor and Storage Manager are the two engines inside every DBMS</div>
+    </div>
+
+    <h3>Trace One Query Through the Complete Structure</h3>
+    <div class="sql-example" aria-label="Query used in the overall database structure walkthrough">
+      <div class="sql-head"><span>student_portal_request.sql</span><span class="sql-dots">&#9679; &#9679; &#9679;</span></div>
+      <pre><span class="sql-keyword">SELECT</span> Name, Marks
+<span class="sql-keyword">FROM</span> Student
+<span class="sql-keyword">WHERE</span> Roll_No = <span class="sql-value">101</span>;</pre>
+    </div>
+    <ol class="step-list">
+      <li><strong>The interface sends the request.</strong> The student portal produces the query after the learner enters roll number 101.</li>
+      <li><strong>The DML compiler translates it.</strong> It checks that <code>Student</code>, <code>Name</code>, <code>Marks</code>, and <code>Roll_No</code> are valid schema elements recorded in the data dictionary.</li>
+      <li><strong>The query optimizer chooses a route.</strong> It decides how to locate roll number 101 efficiently. The user only states the required result, not the disk-access method.</li>
+      <li><strong>The storage manager requests the data.</strong> It coordinates the buffer manager and file manager instead of letting the query processor manipulate disk files directly.</li>
+      <li><strong>The buffer manager checks memory.</strong> If the required data is already in memory, it can be reused; otherwise the file manager helps fetch it from physical storage.</li>
+      <li><strong>The result travels back upward.</strong> The DBMS returns one row such as <code>Aditi | 88</code>, and the portal formats it for the student.</li>
+    </ol>
+
+    <div class="scenario-strip" aria-label="Responsibilities inside a DBMS">
+      <div class="scenario-step">
+        <span>Query processor asks</span>
+        <strong>"What does the request mean?"</strong>
+        <p>Parse, validate, translate, and choose an execution approach.</p>
+      </div>
+      <div class="scenario-arrow" aria-hidden="true">&rarr;</div>
+      <div class="scenario-step">
+        <span>Storage manager asks</span>
+        <strong>"How do I reach the bytes?"</strong>
+        <p>Coordinate memory, files, and physical storage.</p>
+      </div>
+      <div class="scenario-arrow" aria-hidden="true">&rarr;</div>
+      <div class="scenario-step">
+        <span>Data dictionary answers</span>
+        <strong>"What does the database contain?"</strong>
+        <p>Supply metadata: names, types, structures, and constraints.</p>
+      </div>
     </div>
 
     <table class="data-table">
@@ -856,6 +1352,18 @@
         themselves.
       </p>
     </div>
+
+    <div class="exam-angle">
+      <div class="angle-card">
+        <h4>Exam perspective</h4>
+        <p>Draw the complete flow from users to query processor to storage manager to physical storage. Under the diagram, explain each subcomponent in one precise sentence.</p>
+      </div>
+      <div class="angle-card">
+        <h4>Interview perspective</h4>
+        <p>Describe one <code>SELECT</code> from entry to result. A concrete journey demonstrates how query processing, metadata, buffering, and file access cooperate.</p>
+      </div>
+    </div>
+    <div class="section-takeaway"><span>Section takeaway</span><p>The query processor understands and plans a request; the storage manager reaches the data; the data dictionary supplies the structural meaning needed by both.</p></div>
   </section>
 
   <!-- 10. IMPORTANT TERMINOLOGIES -->
@@ -864,21 +1372,21 @@
     <h2>Important Terminologies</h2>
     <p>These words appear repeatedly in database questions. Learn the meaning, not just the spelling.</p>
     <div class="term-grid">
-      <div class="term-card"><h3>Data</h3><p>Raw facts such as names, marks, dates, prices, or account numbers.</p></div>
-      <div class="term-card"><h3>Information</h3><p>Data arranged in a meaningful way, such as "Asha scored 82 marks in DBMS".</p></div>
-      <div class="term-card"><h3>Database</h3><p>An organised collection of related data stored for easy access and update.</p></div>
-      <div class="term-card"><h3>DBMS</h3><p>Software that creates, stores, retrieves, updates, protects, and manages a database.</p></div>
-      <div class="term-card"><h3>File System</h3><p>A storage method where each application directly manages its own files.</p></div>
-      <div class="term-card"><h3>Metadata</h3><p>Data about data, such as table names, column names, data types, and constraints.</p></div>
-      <div class="term-card"><h3>Schema</h3><p>The structure or design of the database. It changes rarely.</p></div>
-      <div class="term-card"><h3>Instance</h3><p>The actual data stored in the database at a particular moment.</p></div>
-      <div class="term-card"><h3>Data Model</h3><p>A set of concepts used to describe how data, relationships, and rules are represented.</p></div>
-      <div class="term-card"><h3>Data Independence</h3><p>The ability to change one level of database design without forcing changes at another level.</p></div>
-      <div class="term-card"><h3>DDL</h3><p>Data Definition Language. Commands that define or change database structure.</p></div>
-      <div class="term-card"><h3>DML</h3><p>Data Manipulation Language. Commands that retrieve or modify the stored data.</p></div>
-      <div class="term-card"><h3>Query Processor</h3><p>The DBMS component that understands and prepares user queries for execution.</p></div>
-      <div class="term-card"><h3>Storage Manager</h3><p>The DBMS component that manages actual reading and writing of data on storage.</p></div>
-      <div class="term-card"><h3>Data Dictionary</h3><p>A system catalog that stores metadata about the database structure.</p></div>
+      <div class="term-card"><h3>Data</h3><p>Raw facts such as <code>101</code>, <code>Aditi</code>, and <code>88</code>. A fact may be stored correctly but still needs context before it communicates meaning.</p></div>
+      <div class="term-card"><h3>Information</h3><p>Data interpreted in context: "Student 101, Aditi, scored 88." Information is the useful meaning produced from organised facts.</p></div>
+      <div class="term-card"><h3>Database</h3><p>An organised collection of related data, such as all student, course, and result records of a college. It is the managed content, not the management software.</p></div>
+      <div class="term-card"><h3>DBMS</h3><p>Software that defines, stores, retrieves, updates, protects, and coordinates access to a database. Applications communicate with data through this layer.</p></div>
+      <div class="term-card"><h3>File System</h3><p>A storage approach in which applications directly manage their own files. This direct dependency makes sharing, rule enforcement, and structural change difficult.</p></div>
+      <div class="term-card"><h3>Metadata</h3><p>Data that describes other data. <code>Marks INT</code> is metadata because it states a field's name and type; <code>88</code> is the actual value.</p></div>
+      <div class="term-card"><h3>Schema</h3><p>The designed structure of a database: names, fields, types, and rules. Adding a column changes the schema; adding a row does not.</p></div>
+      <div class="term-card"><h3>Instance</h3><p>The complete snapshot of stored values at a particular moment. It changes whenever a row is inserted, updated, or deleted.</p></div>
+      <div class="term-card"><h3>Data Model</h3><p>A set of concepts for describing data, relationships, and constraints. A model supplies the design vocabulary from which a particular schema is built.</p></div>
+      <div class="term-card"><h3>Data Independence</h3><p>The ability to change a lower database level without forcing change in the level above. It protects applications from implementation details.</p></div>
+      <div class="term-card"><h3>DDL</h3><p>Data Definition Language. Commands such as <code>CREATE</code>, <code>ALTER</code>, and <code>DROP</code> define or change schema structure.</p></div>
+      <div class="term-card"><h3>DML</h3><p>Data Manipulation Language. Commands such as <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, and <code>DELETE</code> work with stored values.</p></div>
+      <div class="term-card"><h3>Query Processor</h3><p>The DBMS subsystem that interprets, validates, translates, and optimizes a request before execution. It decides what work must be done.</p></div>
+      <div class="term-card"><h3>Storage Manager</h3><p>The DBMS subsystem that coordinates memory and files to read or write physical data. It decides how the required bytes are accessed.</p></div>
+      <div class="term-card"><h3>Data Dictionary</h3><p>The system catalog containing metadata such as table names, column types, and constraints. The DBMS consults it to understand its own structure.</p></div>
     </div>
   </section>
 
@@ -964,7 +1472,7 @@
     </div>
     <div class="callout callout-trick">
       <div class="callout-label">&#128161; Trick 4 — DBMS Advantages Over File System</div>
-      <p><strong>"RICSBC"</strong> — Redundancy reduced, Integrity enforced, Consistency maintained, Sharing enabled, Backup automated, Concurrency controlled. Seven advantages, one word to recall them all.</p>
+      <p><strong>"RICSBC"</strong> — Redundancy reduced, Integrity enforced, Consistency maintained, Sharing enabled, Backup automated, Concurrency controlled. Six advantages, one code to recall them all.</p>
     </div>
     <div class="callout callout-trick">
       <div class="callout-label">&#128161; Trick 5 — Overall Structure</div>
@@ -983,6 +1491,49 @@
   <section class="topic-block" id="revision">
     <div class="topic-kicker">Section 17</div>
     <h2>Quick Revision Notes</h2>
+    <div class="diagram-frame">
+      <svg viewBox="0 0 780 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mind map summarizing the introduction to database systems chapter">
+        <rect x="290" y="194" width="200" height="88" rx="18" style="fill:var(--surface-2);stroke:var(--accent);stroke-width:2"/>
+        <text x="390" y="226" text-anchor="middle" style="font:700 14px monospace;fill:var(--accent)">DATABASE SYSTEM</text>
+        <text x="390" y="248" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">data + DBMS + users</text>
+        <text x="390" y="265" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">+ applications + storage</text>
+
+        <path d="M290 217 C238 194, 230 110, 198 89" fill="none" style="stroke:var(--border)"/>
+        <rect x="28" y="32" width="210" height="100" rx="12" style="fill:var(--surface);stroke:var(--teal)"/>
+        <text x="133" y="57" text-anchor="middle" style="font:700 11px monospace;fill:var(--teal)">WHY DBMS?</text>
+        <text x="133" y="79" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">reduce redundancy + inconsistency</text>
+        <text x="133" y="96" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">control sharing + security</text>
+        <text x="133" y="113" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">support integrity + safe access</text>
+
+        <path d="M490 217 C542 194, 550 110, 582 89" fill="none" style="stroke:var(--border)"/>
+        <rect x="542" y="32" width="210" height="100" rx="12" style="fill:var(--surface);stroke:var(--teal)"/>
+        <text x="647" y="57" text-anchor="middle" style="font:700 11px monospace;fill:var(--teal)">ARCHITECTURE</text>
+        <text x="647" y="79" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">External = user views</text>
+        <text x="647" y="96" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">Conceptual = logical design</text>
+        <text x="647" y="113" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">Internal = physical storage</text>
+
+        <path d="M290 255 C230 275, 226 354, 194 380" fill="none" style="stroke:var(--border)"/>
+        <rect x="28" y="346" width="224" height="108" rx="12" style="fill:var(--surface);stroke:var(--accent)"/>
+        <text x="140" y="372" text-anchor="middle" style="font:700 11px monospace;fill:var(--accent)">DESIGN + CHANGE</text>
+        <text x="140" y="394" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">Model = design concepts</text>
+        <text x="140" y="411" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">Schema = stable structure</text>
+        <text x="140" y="428" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">Instance = current values</text>
+        <text x="140" y="445" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">Independence protects levels</text>
+
+        <path d="M490 255 C550 275, 554 354, 586 380" fill="none" style="stroke:var(--border)"/>
+        <rect x="528" y="346" width="224" height="108" rx="12" style="fill:var(--surface);stroke:var(--accent)"/>
+        <text x="640" y="372" text-anchor="middle" style="font:700 11px monospace;fill:var(--accent)">LANGUAGE + ENGINE</text>
+        <text x="640" y="394" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">DDL defines structure</text>
+        <text x="640" y="411" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">DML works with data</text>
+        <text x="640" y="428" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">Query processor understands</text>
+        <text x="640" y="445" text-anchor="middle" style="font:9px monospace;fill:var(--text-dim)">Storage manager accesses</text>
+
+        <rect x="288" y="316" width="204" height="38" rx="19" style="fill:var(--surface-2);stroke:var(--text-faint)"/>
+        <text x="390" y="340" text-anchor="middle" style="font:700 10px monospace;fill:var(--text)">ONE CONTROLLED DATA PATH</text>
+        <line x1="390" y1="282" x2="390" y2="316" style="stroke:var(--border)"/>
+      </svg>
+      <div class="diagram-caption">Fig 1.10 — One-page mind map connecting every Chapter 1 syllabus concept</div>
+    </div>
     <div class="revision-box">
       <ul>
         <li>Database = organised data. DBMS = software to manage it.</li>
