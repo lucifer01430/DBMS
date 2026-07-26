@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 1 — Introduction to Database Systems | AKTU DBMS</title>
+<meta name="description" content="AKTU DBMS Chapter 1: Introduction to Database Systems — overview, DBMS vs file system, architecture, schema & instances, data independence, DDL/DML, overall database structure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/chapter.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="brand">
+      <span class="brand-mark">DB</span>
+      DBMS Path <span class="brand-sub">&nbsp;/ AKTU</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html#roadmap">Roadmap</a>
+      <a href="index.html#tracker">Progress</a>
+      <a href="index.html">Home</a>
+    </div>
+  </div>
+</nav>
+
+<header class="chapter-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="index.html#roadmap">Unit I</a> / Chapter 1</div>
+    <div class="hero-eyebrow">Unit I &middot; Chapter 01 of 22</div>
+    <h1 class="hero-title">Introduction to <span>Database Systems</span></h1>
+    <p class="hero-desc">
+      Before you can design a database, you need to know what one actually is, why it replaced plain files,
+      and how it's built in layers. This chapter covers every AKTU Unit&nbsp;I "Introduction" topic, from
+      the overview down to the overall database structure.
+    </p>
+    <div class="chapter-meta-row">
+      <span class="badge">Difficulty: Beginner</span>
+      <span class="badge">~2.5 hrs</span>
+      <span class="badge">8 sub-topics</span>
+    </div>
+
+    <div class="toc-box">
+      <h4>On this page</h4>
+      <div class="toc-grid">
+        <a href="#objectives">1. Learning Objectives</a>
+        <a href="#topics-covered">2. AKTU Topics Covered</a>
+        <a href="#overview">3. Overview of Database Systems</a>
+        <a href="#db-vs-file">4. Database System vs File System</a>
+        <a href="#architecture">5. Database System Architecture</a>
+        <a href="#schema-instance">6. Data Models, Schema &amp; Instances</a>
+        <a href="#independence">7. Data Independence</a>
+        <a href="#languages">8. Database Languages &amp; Interfaces</a>
+        <a href="#overall-structure">9. Overall Database Structure</a>
+        <a href="#memory-tricks">10. Memory Tricks</a>
+        <a href="#exam-points">11. Important Exam Points</a>
+        <a href="#faqs">12. FAQs</a>
+        <a href="#pyq">13. Previous Year Question Focus</a>
+        <a href="#revision">14. Quick Revision Notes</a>
+        <a href="#summary">15. Chapter Summary</a>
+        <a href="#practice">16. Practice Questions</a>
+        <a href="#quiz">17. Self-Test Quiz</a>
+        <a href="#checklist">18. Chapter Checklist</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- 1. LEARNING OBJECTIVES -->
+  <section class="topic-block" id="objectives">
+    <div class="topic-kicker">Section 01</div>
+    <h2>Learning Objectives</h2>
+    <p>By the end of this chapter, you will be able to:</p>
+    <ul class="obj-list">
+      <li>Explain what a database and a DBMS are, in your own words.</li>
+      <li>List concrete problems of storing data in plain files, and how a DBMS solves each one.</li>
+      <li>Draw and label the three-level (ANSI-SPARC) database architecture.</li>
+      <li>Tell apart a <strong>data model</strong>, a <strong>schema</strong>, and an <strong>instance</strong>.</li>
+      <li>Explain physical and logical data independence with an example.</li>
+      <li>Identify which SQL statements belong to DDL and which belong to DML.</li>
+      <li>Sketch the overall structure of a DBMS and name its main components.</li>
+    </ul>
+  </section>
+
+  <!-- 2. TOPICS COVERED -->
+  <section class="topic-block" id="topics-covered">
+    <div class="topic-kicker">Section 02</div>
+    <h2>Official AKTU Topics Covered</h2>
+    <div class="syllabus-box">
+      <div class="label">Unit I &mdash; Introduction (as printed in the syllabus)</div>
+      <ul>
+        <li>Overview</li>
+        <li>Database System vs File System</li>
+        <li>Database System Concept and Architecture</li>
+        <li>Data Model Schema and Instances</li>
+        <li>Data Independence and Database Language and Interfaces</li>
+        <li>Data Definition Language (DDL)</li>
+        <li>DML (Data Manipulation Language)</li>
+        <li>Overall Database Structure</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3. OVERVIEW -->
+  <section class="topic-block" id="overview">
+    <div class="topic-kicker">Section 03</div>
+    <h2>Overview of Database Systems</h2>
+
+    <div class="callout callout-easy">
+      <div class="callout-label">&#9998; Very Easy Explanation</div>
+      <p>
+        Let's start from zero. <strong>Data</strong> is just raw facts &mdash; a name, a number, a date &mdash;
+        on their own, with no meaning attached yet. The moment you organise that data so it means something
+        ("Rohan scored 76 marks in DBMS"), it becomes <strong>information</strong>.
+        A <strong>database</strong> is a large, organised collection of related data, stored in a computer so
+        that it can be found, added to, or changed very quickly and reliably. Think of it as a very smart,
+        very large digital notebook that never gets messy, no matter how many people write in it at once.
+      </p>
+      <p>
+        A <strong>DBMS (Database Management System)</strong> is not the notebook itself &mdash; it is the
+        librarian in charge of that notebook. You never touch the notebook directly. You ask the librarian
+        ("show me all students with marks above 80") and the DBMS fetches exactly that, without you ever
+        needing to know which page, shelf, or drawer the data is physically kept in.
+      </p>
+    </div>
+
+    <div class="callout callout-analogy">
+      <div class="callout-label">&#128161; Real-Life Analogy</div>
+      <p>
+        Imagine a huge government library with lakhs of books, and no librarian. You want a specific book on
+        page 240 of some shelf, somewhere. You'd be searching for hours, and if two people try to update the
+        same register at once, chaos follows. Now add a trained librarian: you tell them what you want, they
+        instantly know exactly where it is, they make sure no two people damage the same book at the same
+        time, and they keep a backup index of everything. That librarian is exactly what a DBMS does for
+        your data.
+      </p>
+    </div>
+
+    <div class="callout callout-why">
+      <div class="callout-label">&#9889; Why This Topic Exists</div>
+      <p>
+        Every other chapter in this subject &mdash; ER models, SQL, normalization, transactions &mdash; is
+        really just "more detail" about one of the ideas introduced here. If Chapter&nbsp;1 is shaky, every
+        later chapter feels harder than it needs to be. This chapter is the foundation floor of the whole
+        subject: you cannot design a good ER diagram (Chapter 2) if you don't first understand what a
+        database is actually trying to achieve.
+      </p>
+    </div>
+
+    <h3>Step-by-Step: What Actually Happens When You "Use" a Database</h3>
+    <ol class="step-list">
+      <li><strong>You make a request.</strong> Example: you open a college portal and click "Show my attendance".</li>
+      <li><strong>The request reaches the DBMS.</strong> The application does not read the raw file itself &mdash; it asks the DBMS in a formal query language (like SQL).</li>
+      <li><strong>The DBMS locates and fetches only the relevant data</strong> &mdash; not the entire database, just your attendance rows.</li>
+      <li><strong>The DBMS checks rules along the way</strong> &mdash; for example, it will not let anyone insert a negative attendance value if a constraint says attendance must be &ge; 0.</li>
+      <li><strong>The result is handed back</strong> to the application, which displays it to you as a neat attendance percentage.</li>
+    </ol>
+    <p>Notice that at no point did you, the user, need to know which hard disk block your data lives in. That gap between "what you asked for" and "how it was actually stored" is the entire idea this chapter builds toward.</p>
+
+    <h3>Multiple Real-World Examples</h3>
+    <div class="example-grid">
+      <div class="example-card">
+        <span class="ex-tag">College</span>
+        <p>Your college's student record system: admission number, name, marks, attendance &mdash; all searchable in seconds. That's a database in action.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-tag">Everyday app</span>
+        <p>WhatsApp storing your chats, contacts, and media so they load instantly when you open the app.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-tag">Bank</span>
+        <p>Your bank keeping your account balance, so an ATM anywhere in the country shows the correct amount instantly.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-tag">Online shopping</span>
+        <p>Amazon or Flipkart storing every product, price, and your order history, and updating stock the instant an order is placed.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-tag">Railways</span>
+        <p>IRCTC checking seat availability across thousands of trains at once, and instantly locking a seat once you book it.</p>
+      </div>
+    </div>
+
+    <h3>Data vs Information vs Database vs DBMS</h3>
+    <p>Students often use these four words as if they mean the same thing. They don't. Keep this table in mind &mdash; it clears up a very common point of confusion.</p>
+    <table class="data-table">
+      <thead><tr><th>Term</th><th>What it means</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Data</strong></td><td>Raw, unprocessed facts with no context yet</td><td>"76", "Rohan", "B.Tech"</td></tr>
+        <tr><td><strong>Information</strong></td><td>Data that has been organised/processed to have meaning</td><td>"Rohan, a B.Tech student, scored 76 marks"</td></tr>
+        <tr><td><strong>Database</strong></td><td>The organised, stored collection of related data</td><td>The full "Students" table with every student's row</td></tr>
+        <tr><td><strong>DBMS</strong></td><td>The software that manages, protects, and gives access to the database</td><td>MySQL, Oracle, PostgreSQL</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-mistake">
+      <div class="callout-label">&#9888; Common Mistake</div>
+      <p>
+        Students frequently write "database" when they mean "DBMS", and vice versa, in exam answers. Remember:
+        the <strong>database is the data</strong>; the <strong>DBMS is the software</strong> that manages that
+        data. MySQL is a DBMS. The actual "College_Records" you build inside MySQL is the database.
+      </p>
+    </div>
+  </section>
+
+  <!-- 4. DB vs FILE SYSTEM -->
+  <section class="topic-block" id="db-vs-file">
+    <div class="topic-kicker">Section 04</div>
+    <h2>Database System vs File System</h2>
+    <p>
+      Before DBMS existed, programs stored data directly in files (like <code>.txt</code> or <code>.dat</code> files),
+      each application managing its own files. This is called the <strong>file processing system</strong>. To
+      really appreciate why DBMS was invented, you first need to feel the pain of the file system &mdash; so
+      let's build it up from zero.
+    </p>
+
+    <div class="callout callout-analogy">
+      <div class="callout-label">&#128161; Real-Life Analogy</div>
+      <p>
+        Imagine every department in your college keeping its own separate diary for student information &mdash;
+        the Fees office has a diary, the Exam office has a diary, the Hostel office has a diary. Each diary
+        repeats the student's name and phone number. Now the student changes their phone number. Unless
+        someone manually walks to every single office and updates every single diary, the diaries start
+        disagreeing with each other. This is exactly what happens inside a file processing system, just with
+        computer files instead of paper diaries.
+      </p>
+    </div>
+
+    <h3>Step-by-Step: The Problems With File Systems</h3>
+    <ol class="step-list">
+      <li><strong>Data Redundancy:</strong> The same data (like a student's name) gets copied into multiple files used by different programs, wasting storage and effort.</li>
+      <li><strong>Data Inconsistency:</strong> Because the same fact is stored in more than one place, an update in one file but not another leaves the system with two different "truths".</li>
+      <li><strong>Difficulty in Accessing Data:</strong> If you need a new type of report (say, "students who live in a particular city"), and no existing program produces it, a programmer must write brand-new code just to read the files differently.</li>
+      <li><strong>Data Isolation:</strong> Data is scattered across files in different formats, making it hard for one program to use data that "belongs" to another program.</li>
+      <li><strong>Integrity Problems:</strong> Rules like "marks must be between 0 and 100" have to be manually enforced inside every single program that touches the data &mdash; and it's easy to forget one.</li>
+      <li><strong>Atomicity Problems:</strong> If a money transfer program crashes halfway (debited from one account but not yet credited to another), the file system has no built-in way to safely undo the half-finished operation.</li>
+      <li><strong>Concurrent Access Anomalies:</strong> If two users update the same file at the same time without any control, one person's update can silently overwrite the other's.</li>
+      <li><strong>Security Problems:</strong> File systems typically protect data only at the whole-file level &mdash; you can't easily say "this user may see Name and Marks, but not Salary" the way a DBMS can.</li>
+    </ol>
+
+    <div class="diagram-frame">
+      <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram comparing file system silos with a single shared database">
+        <text x="170" y="26" text-anchor="middle" style="font:600 13px monospace;fill:var(--text-dim)">FILE SYSTEM (Old Way)</text>
+        <rect x="20" y="45" width="120" height="34" rx="6" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="80" y="66" text-anchor="middle" style="font:12px monospace;fill:var(--text)">Payroll App</text>
+        <rect x="200" y="45" width="120" height="34" rx="6" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="260" y="66" text-anchor="middle" style="font:12px monospace;fill:var(--text)">Library App</text>
+        <rect x="20" y="110" width="120" height="34" rx="6" style="fill:var(--bg-raise);stroke:var(--danger)"/>
+        <text x="80" y="131" text-anchor="middle" style="font:11px monospace;fill:var(--danger)">employee.dat</text>
+        <rect x="200" y="110" width="120" height="34" rx="6" style="fill:var(--bg-raise);stroke:var(--danger)"/>
+        <text x="260" y="131" text-anchor="middle" style="font:11px monospace;fill:var(--danger)">student.dat</text>
+        <line x1="80" y1="79" x2="80" y2="110" style="stroke:var(--text-faint)" marker-end="url(#arrow)"/>
+        <line x1="260" y1="79" x2="260" y2="110" style="stroke:var(--text-faint)" marker-end="url(#arrow)"/>
+        <text x="170" y="175" text-anchor="middle" style="font:11px monospace;fill:var(--danger)">Duplicate "name", "address" fields in both files &#8594; inconsistency risk</text>
+
+        <line x1="380" y1="150" x2="420" y2="150" style="stroke:var(--border)" stroke-dasharray="4 4"/>
+
+        <text x="560" y="26" text-anchor="middle" style="font:600 13px monospace;fill:var(--text-dim)">DATABASE SYSTEM (New Way)</text>
+        <rect x="470" y="45" width="110" height="34" rx="6" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="525" y="66" text-anchor="middle" style="font:12px monospace;fill:var(--text)">Payroll App</text>
+        <rect x="600" y="45" width="110" height="34" rx="6" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="655" y="66" text-anchor="middle" style="font:12px monospace;fill:var(--text)">Library App</text>
+        <line x1="525" y1="79" x2="590" y2="118" style="stroke:var(--text-faint)" marker-end="url(#arrow)"/>
+        <line x1="655" y1="79" x2="595" y2="118" style="stroke:var(--text-faint)" marker-end="url(#arrow)"/>
+        <rect x="500" y="120" width="190" height="34" rx="6" style="fill:var(--surface-2);stroke:var(--accent)"/>
+        <text x="595" y="141" text-anchor="middle" style="font:600 12px monospace;fill:var(--accent)">DBMS</text>
+        <line x1="595" y1="154" x2="595" y2="185" style="stroke:var(--accent)" marker-end="url(#arrowAccent)"/>
+        <rect x="500" y="187" width="190" height="34" rx="6" style="fill:var(--bg-raise);stroke:var(--teal)"/>
+        <text x="595" y="208" text-anchor="middle" style="font:11px monospace;fill:var(--teal)">One Shared Database</text>
+        <text x="595" y="245" text-anchor="middle" style="font:11px monospace;fill:var(--teal)">Single copy of "name" &#8594; always consistent</text>
+
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" style="fill:var(--text-faint)"/></marker>
+          <marker id="arrowAccent" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" style="fill:var(--accent)"/></marker>
+        </defs>
+      </svg>
+      <div class="diagram-caption">Fig 1.1 — File system silos vs a single shared database</div>
+    </div>
+
+    <h3>Comparison Table</h3>
+    <table class="data-table">
+      <thead><tr><th>Point</th><th>File System</th><th>Database System (DBMS)</th></tr></thead>
+      <tbody>
+        <tr><td>Data redundancy</td><td>High &mdash; same data repeated in many files</td><td>Low &mdash; data stored once, shared</td></tr>
+        <tr><td>Data consistency</td><td>Hard to maintain, easy to go wrong</td><td>Maintained automatically via constraints</td></tr>
+        <tr><td>Data sharing</td><td>Difficult between applications</td><td>Easy, controlled, and simultaneous</td></tr>
+        <tr><td>Security</td><td>Weak, file-level only</td><td>Strong, field/row-level access control</td></tr>
+        <tr><td>Data independence</td><td>Not present &mdash; program tied to file structure</td><td>Present &mdash; structure can change without breaking programs</td></tr>
+        <tr><td>Backup &amp; recovery</td><td>Manual, error-prone</td><td>Built-in, automated</td></tr>
+        <tr><td>Concurrent access</td><td>Usually unsafe</td><td>Managed safely (concurrency control)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Real-World Example</div>
+      <p>
+        In a college that uses separate files, the <em>Fees</em> office and the <em>Exam</em> office might
+        each keep their own copy of "Student Name". If a student's name is corrected in one file but not the
+        other, the two offices now disagree &mdash; that's a <strong>data inconsistency</strong> caused by
+        redundancy. A DBMS keeps one row for that student, so both offices read the same value.
+      </p>
+    </div>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Second Example — Bank Transfer</div>
+      <p>
+        Suppose &#8377;5,000 is transferred from Account&nbsp;A to Account&nbsp;B. In a raw file system, the
+        debit and credit are two separate write operations to two separate files. If the system crashes right
+        after debiting A but before crediting B, the money simply vanishes, and there's no automatic way to
+        detect or fix it. A DBMS treats "debit A + credit B" as a single, indivisible <strong>transaction</strong>
+        &mdash; either both steps happen, or neither does. (You'll study this in depth in Unit&nbsp;IV; for
+        now, just remember it as one of the strongest real-world reasons DBMS was invented.)
+      </p>
+    </div>
+
+    <div class="callout callout-mistake">
+      <div class="callout-label">&#9888; Common Mistake</div>
+      <p>
+        Don't say "file systems don't have any security" &mdash; they do have basic security (like file
+        permissions: read-only, read-write). The correct exam point is that file system security is
+        <strong>coarse</strong> (whole file at a time), while DBMS security is <strong>fine-grained</strong>
+        (can restrict access down to a specific column or row).
+      </p>
+    </div>
+  </section>
+
+  <!-- 5. ARCHITECTURE -->
+  <section class="topic-block" id="architecture">
+    <div class="topic-kicker">Section 05</div>
+    <h2>Database System Concept &amp; Architecture</h2>
+    <p>
+      A DBMS separates <em>how data looks to a user</em> from <em>how data is actually stored</em>. This is
+      done using the <strong>three-level (ANSI-SPARC) architecture</strong>, proposed by the ANSI/SPARC
+      Study Group to make database systems flexible instead of rigid.
+    </p>
+
+    <div class="callout callout-analogy">
+      <div class="callout-label">&#128161; Real-Life Analogy</div>
+      <p>
+        Think of a TV news channel. Viewers at home (external level) each choose their own language and
+        subtitle settings &mdash; different views of the same broadcast. Behind the scenes, the news studio
+        has one single master script and camera feed that everything is based on (conceptual level). And
+        underneath all of that, there's the actual physical broadcasting equipment, cables, and satellite
+        hardware sending out the signal (internal level). You, as a viewer, never need to think about
+        satellites &mdash; you just pick a channel and language. That's exactly the separation the three-level
+        architecture gives a database user.
+      </p>
+    </div>
+
+    <h3>The Three Levels, Explained From Zero</h3>
+    <ol class="step-list">
+      <li><strong>External Level (View Level):</strong> What individual users see. Different users can see different, simplified "views" of the same data. Example: a fees clerk's screen shows only fee-related columns; a teacher's screen shows only marks.</li>
+      <li><strong>Conceptual Level (Logical Level):</strong> Describes what data is stored and the relationships among it, for the whole database, ignoring physical storage details. This is where the overall schema lives.</li>
+      <li><strong>Internal Level (Physical Level):</strong> Describes how data is actually stored on disk &mdash; files, indexes, block sizes. Closest to the hardware.</li>
+    </ol>
+
+    <div class="diagram-frame">
+      <svg viewBox="0 0 640 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three level ANSI SPARC database architecture diagram">
+        <text x="320" y="24" text-anchor="middle" style="font:600 13px monospace;fill:var(--text-dim)">THREE-LEVEL ARCHITECTURE</text>
+
+        <rect x="60" y="42" width="130" height="40" rx="6" style="fill:var(--surface-2);stroke:var(--teal)"/>
+        <text x="125" y="66" text-anchor="middle" style="font:11px monospace;fill:var(--teal)">View A</text>
+        <rect x="255" y="42" width="130" height="40" rx="6" style="fill:var(--surface-2);stroke:var(--teal)"/>
+        <text x="320" y="66" text-anchor="middle" style="font:11px monospace;fill:var(--teal)">View B</text>
+        <rect x="450" y="42" width="130" height="40" rx="6" style="fill:var(--surface-2);stroke:var(--teal)"/>
+        <text x="515" y="66" text-anchor="middle" style="font:11px monospace;fill:var(--teal)">View C</text>
+        <text x="10" y="66" style="font:600 10px monospace;fill:var(--text-faint)">EXTERNAL</text>
+
+        <line x1="125" y1="82" x2="300" y2="128" style="stroke:var(--border)" marker-end="url(#a2)"/>
+        <line x1="320" y1="82" x2="315" y2="128" style="stroke:var(--border)" marker-end="url(#a2)"/>
+        <line x1="515" y1="82" x2="335" y2="128" style="stroke:var(--border)" marker-end="url(#a2)"/>
+
+        <rect x="180" y="130" width="280" height="46" rx="6" style="fill:var(--surface-2);stroke:var(--accent)"/>
+        <text x="320" y="158" text-anchor="middle" style="font:600 12px monospace;fill:var(--accent)">Conceptual Schema (Logical Level)</text>
+        <text x="10" y="158" style="font:600 10px monospace;fill:var(--text-faint)">CONCEPTUAL</text>
+
+        <line x1="320" y1="176" x2="320" y2="222" style="stroke:var(--border)" marker-end="url(#a2)"/>
+
+        <rect x="180" y="224" width="280" height="46" rx="6" style="fill:var(--bg-raise);stroke:var(--text-faint)"/>
+        <text x="320" y="252" text-anchor="middle" style="font:600 12px monospace;fill:var(--text)">Internal Schema (Physical Storage)</text>
+        <text x="10" y="252" style="font:600 10px monospace;fill:var(--text-faint)">INTERNAL</text>
+
+        <line x1="320" y1="270" x2="320" y2="300" style="stroke:var(--border)" marker-end="url(#a2)"/>
+        <text x="320" y="314" text-anchor="middle" style="font:11px monospace;fill:var(--text-faint)">Physical Disk / Data Files</text>
+
+        <defs><marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" style="fill:var(--border)"/></marker></defs>
+      </svg>
+      <div class="diagram-caption">Fig 1.2 — External, Conceptual and Internal levels, top to bottom</div>
+    </div>
+
+    <table class="data-table">
+      <thead><tr><th>Level</th><th>Answers</th><th>Who sees it</th></tr></thead>
+      <tbody>
+        <tr><td>External</td><td>"What do <em>I</em> need to see?"</td><td>End users, applications</td></tr>
+        <tr><td>Conceptual</td><td>"What data exists, and how does it relate?"</td><td>Database Administrator (DBA)</td></tr>
+        <tr><td>Internal</td><td>"How is it physically stored?"</td><td>DBMS engine / storage layer</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Worked Example — One Database, Three Views</h3>
+    <p>
+      Suppose a college database has one big <code>Student</code> table with columns:
+      Roll_No, Name, Marks, Fee_Due, Address, Phone.
+    </p>
+    <div class="example-grid">
+      <div class="example-card">
+        <span class="ex-tag">External view — Exam Cell</span>
+        <p>Sees only Roll_No, Name, Marks. Fee_Due and Address are hidden from this view entirely.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-tag">External view — Fees Office</span>
+        <p>Sees only Roll_No, Name, Fee_Due. Marks are hidden from this view entirely.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-tag">Conceptual level</span>
+        <p>Knows the full picture: every column, every relationship, every constraint, for the whole institution.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-tag">Internal level</span>
+        <p>Knows this table is stored as a B-Tree indexed file split across specific disk blocks &mdash; something neither office ever needs to see.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-mistake">
+      <div class="callout-label">&#9888; Common Mistake</div>
+      <p>
+        Students often think "external level" means "outside the computer" or "the internet". It doesn't.
+        External here simply means <strong>closest to individual users</strong> &mdash; i.e. their personalised
+        view of the data, still fully inside the DBMS.
+      </p>
+    </div>
+  </section>
+
+  <!-- 6. SCHEMA / INSTANCE -->
+  <section class="topic-block" id="schema-instance">
+    <div class="topic-kicker">Section 06</div>
+    <h2>Data Models, Schema &amp; Instances</h2>
+
+    <h3>Data Model</h3>
+    <div class="callout callout-easy">
+      <div class="callout-label">&#9998; Very Easy Explanation</div>
+      <p>
+        A <strong>data model</strong> is a collection of tools/concepts to describe data, its relationships,
+        and constraints &mdash; it's the "blueprint language" you use to design a database (e.g. the
+        relational model, which you'll study from Unit&nbsp;II onward).
+      </p>
+    </div>
+
+    <div class="callout callout-analogy">
+      <div class="callout-label">&#128161; Real-Life Analogy</div>
+      <p>
+        Before an architect builds a house, they draw a blueprint that shows rooms, doors, and how they
+        connect &mdash; without worrying yet about the exact brand of cement or paint colour. A data model
+        plays the same role for a database: it lets a designer describe "what data exists and how it relates"
+        before ever touching physical storage details.
+      </p>
+    </div>
+
+    <div class="callout callout-support">
+      <div class="callout-label">Supporting Concept</div>
+      <p>
+        You will mostly work with the <strong>relational data model</strong> in this subject (Unit&nbsp;II
+        onward), where data is organised into tables. Historically, older systems also used the
+        <strong>hierarchical model</strong> (data arranged like a tree) and the <strong>network model</strong>
+        (data arranged like a graph). You don't need depth on these for AKTU Unit&nbsp;I &mdash; just know the
+        relational model is the one this entire course builds on.
+      </p>
+    </div>
+
+    <h3>Schema vs Instance</h3>
+    <p>This is one of the most commonly confused pairs in DBMS &mdash; and a favourite exam question.</p>
+    <div class="example-grid">
+      <div class="example-card">
+        <span class="ex-tag">Schema</span>
+        <p>The overall <strong>design/structure</strong> of the database. Like a blank form with labelled boxes: Roll_No, Name, Marks. It rarely changes.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-tag">Instance</span>
+        <p>The <strong>actual data</strong> stored at a given moment. Like the same form filled in with real values. It changes every time data is added or updated.</p>
+      </div>
+    </div>
+
+    <table class="data-table">
+      <thead><tr><th>Roll_No (int)</th><th>Name (varchar)</th><th>Marks (int)</th></tr></thead>
+      <tbody>
+        <tr><td>101</td><td>Aditi</td><td>88</td></tr>
+        <tr><td>102</td><td>Rohan</td><td>76</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.85rem;color:var(--text-faint);margin-top:-8px;">
+      &#8593; The <strong>column headers + data types</strong> (Roll_No int, Name varchar, Marks int) are the <strong>schema</strong>.
+      The <strong>rows</strong> (101, Aditi, 88) are one <strong>instance</strong> — tomorrow, after new admissions, the instance changes, but the schema stays the same.
+    </p>
+
+    <h3>Second Example — Library Book Register</h3>
+    <p>
+      A library database has a schema: <code>Book(Book_ID int, Title varchar, Author varchar, Available boolean)</code>.
+      Today's instance might have 3,000 rows of real books. Tomorrow, when 20 new books arrive, the instance
+      grows to 3,020 rows &mdash; but the schema (the four columns and their types) is untouched. If the
+      library later decides to also track "Publication_Year", that's when the <strong>schema itself</strong>
+      changes.
+    </p>
+
+    <div class="callout callout-mistake">
+      <div class="callout-label">&#9888; Common Mistake</div>
+      <p>
+        Do not say "instance means one row". An instance is the <strong>entire snapshot of data in the
+        database at one moment</strong> &mdash; i.e. all rows together, not a single row. This distinction
+        matters for full marks.
+      </p>
+    </div>
+  </section>
+
+  <!-- 7. DATA INDEPENDENCE -->
+  <section class="topic-block" id="independence">
+    <div class="topic-kicker">Section 07</div>
+    <h2>Data Independence</h2>
+    <p>
+      <strong>Data independence</strong> is the ability to change the schema at one level of the database
+      without having to change the schema at the next higher level. It's the entire reason the three-level
+      architecture exists.
+    </p>
+
+    <div class="callout callout-analogy">
+      <div class="callout-label">&#128161; Real-Life Analogy</div>
+      <p>
+        Think about a mobile charger. When you plug your phone into a charger, you don't care whether the
+        electricity behind the socket comes from a coal power plant, a solar panel, or a hydro dam &mdash;
+        the socket "interface" stays the same no matter what changes on the other side. Data independence
+        works the same way: the layer above doesn't need to know or care about a change made in the layer
+        below, as long as the interface between them stays the same.
+      </p>
+    </div>
+
+    <table class="data-table">
+      <thead><tr><th>Type</th><th>Definition</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Physical Data Independence</strong></td>
+          <td>Ability to change the <em>internal</em> schema without changing the <em>conceptual</em> schema.</td>
+          <td>DBA moves the database to a faster hard disk or adds an index &mdash; your SQL queries still work unchanged.</td>
+        </tr>
+        <tr>
+          <td><strong>Logical Data Independence</strong></td>
+          <td>Ability to change the <em>conceptual</em> schema without changing <em>external</em> schemas / application programs.</td>
+          <td>A new column "Email" is added to the Student table &mdash; existing apps that don't use Email keep working without modification.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-support">
+      <div class="callout-label">Supporting Concept</div>
+      <p>
+        Logical independence is generally considered <strong>harder to achieve</strong> than physical
+        independence, because changes to logical structure (like removing a table) are more likely to ripple
+        up and affect what applications expect to see. This single line is a very common one-mark question.
+      </p>
+    </div>
+
+    <h3>More Examples to Lock This In</h3>
+    <div class="example-grid">
+      <div class="example-card">
+        <span class="ex-tag">Physical</span>
+        <p>The DBA compresses stored files to save disk space. Your <code>SELECT</code> queries in an app still return the same results, unaffected.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-tag">Physical</span>
+        <p>Switching the underlying storage from a hard disk drive to an SSD. The conceptual schema (tables, columns) doesn't need to change at all.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-tag">Logical</span>
+        <p>Splitting one big "Student" table into "Student_Personal" and "Student_Academic" tables at the conceptual level, while keeping an external view that still looks like one combined table to old applications.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-mistake">
+      <div class="callout-label">&#9888; Common Mistake</div>
+      <p>
+        Students often mix up which independence protects which level. Use this rule: <strong>Physical
+        Independence = Internal changes don't disturb Conceptual.</strong> <strong>Logical Independence =
+        Conceptual changes don't disturb External.</strong> Read it top-down as "the level below changing
+        should not disturb the level right above it".
+      </p>
+    </div>
+  </section>
+
+  <!-- 8. LANGUAGES & INTERFACES -->
+  <section class="topic-block" id="languages">
+    <div class="topic-kicker">Section 08</div>
+    <h2>Database Languages &amp; Interfaces</h2>
+    <p>A DBMS provides specialised languages to talk to the database. AKTU Unit&nbsp;I focuses on two of them:</p>
+
+    <div class="callout callout-analogy">
+      <div class="callout-label">&#128161; Real-Life Analogy</div>
+      <p>
+        Think of setting up a new almirah (cupboard) to store clothes. First you decide the design &mdash;
+        how many shelves, how many drawers &mdash; and get it built. That's like <strong>DDL</strong>: you're
+        defining the structure before anything is stored inside. Only after the almirah exists do you start
+        putting clothes in, taking them out, or rearranging them &mdash; that day-to-day handling of what's
+        <em>inside</em> the structure is like <strong>DML</strong>.
+      </p>
+    </div>
+
+    <table class="data-table">
+      <thead><tr><th>Language</th><th>Full Form</th><th>Purpose</th><th>Example Commands</th></tr></thead>
+      <tbody>
+        <tr><td><strong>DDL</strong></td><td>Data Definition Language</td><td>Defines/changes the schema &mdash; the structure itself</td><td><code>CREATE</code>, <code>ALTER</code>, <code>DROP</code></td></tr>
+        <tr><td><strong>DML</strong></td><td>Data Manipulation Language</td><td>Works with the actual data inside that structure</td><td><code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Seeing DDL and DML Side by Side</h3>
+    <p>You'll study SQL syntax in full detail from Unit&nbsp;II, but seeing it once here makes the DDL/DML difference concrete instead of abstract:</p>
+    <div class="example-grid">
+      <div class="example-card">
+        <span class="ex-tag">DDL — builds the structure</span>
+        <p><code>CREATE TABLE Student (Roll_No INT, Name VARCHAR(30), Marks INT);</code><br>This creates an empty table &mdash; no data yet, just the design.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-tag">DML — fills it with data</span>
+        <p><code>INSERT INTO Student VALUES (101, 'Aditi', 88);</code><br>This adds one actual row of data into the structure DDL created.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-tag">DML — reads the data</span>
+        <p><code>SELECT Name FROM Student WHERE Marks &gt; 80;</code><br>This retrieves data that already exists &mdash; it changes nothing about the structure.</p>
+      </div>
+      <div class="example-card">
+        <span class="ex-tag">DDL — changes the structure</span>
+        <p><code>ALTER TABLE Student ADD Email VARCHAR(40);</code><br>This changes the design itself by adding a brand-new column.</p>
+      </div>
+    </div>
+
+    <div class="diagram-frame">
+      <svg viewBox="0 0 640 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DDL builds the structure, DML works with the data inside it">
+        <rect x="30" y="60" width="180" height="60" rx="8" style="fill:var(--surface-2);stroke:var(--accent)"/>
+        <text x="120" y="85" text-anchor="middle" style="font:600 12px monospace;fill:var(--accent)">DDL</text>
+        <text x="120" y="103" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">builds the empty table</text>
+        <line x1="210" y1="90" x2="270" y2="90" style="stroke:var(--border)" marker-end="url(#a3)"/>
+        <rect x="272" y="60" width="180" height="60" rx="8" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="362" y="85" text-anchor="middle" style="font:600 12px monospace;fill:var(--text)">Empty Schema</text>
+        <text x="362" y="103" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">Roll_No | Name | Marks</text>
+        <line x1="452" y1="90" x2="512" y2="90" style="stroke:var(--border)" marker-end="url(#a3)"/>
+        <rect x="514" y="60" width="110" height="60" rx="8" style="fill:var(--surface-2);stroke:var(--teal)"/>
+        <text x="569" y="85" text-anchor="middle" style="font:600 12px monospace;fill:var(--teal)">DML</text>
+        <text x="569" y="103" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">fills / reads rows</text>
+        <defs><marker id="a3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" style="fill:var(--border)"/></marker></defs>
+      </svg>
+      <div class="diagram-caption">Fig 1.3 — DDL defines the container, DML operates on what's inside it</div>
+    </div>
+
+    <h3>Database Interfaces</h3>
+    <p>
+      Not everyone who uses a database knows how to write SQL. A cashier at a bank, or a librarian issuing a
+      book, has never typed a query in their life &mdash; yet they interact with a database every single day.
+      <strong>Interfaces</strong> are how different types of users actually interact with a DBMS without
+      writing raw code:
+    </p>
+    <table class="data-table">
+      <thead><tr><th>Interface Type</th><th>How it works</th><th>Everyday Example</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Menu-based</strong></td><td>User picks from a list of pre-set options, no typing of queries needed</td><td>ATM screen: "Withdraw / Balance Enquiry / Mini Statement"</td></tr>
+        <tr><td><strong>Form-based</strong></td><td>User fills structured labelled fields; the DBMS turns the form into a query behind the scenes</td><td>Filling an online college admission form</td></tr>
+        <tr><td><strong>GUI (Graphical)</strong></td><td>Point-and-click visual tools to view/edit tables without writing SQL manually</td><td>MySQL Workbench, phpMyAdmin</td></tr>
+        <tr><td><strong>Natural language</strong></td><td>User types a plain-English request; the DBMS interprets and converts it to a formal query</td><td>Asking a voice assistant "How many unread messages do I have?"</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-mistake">
+      <div class="callout-label">&#9888; Common Mistake</div>
+      <p>
+        Don't confuse a "database language" (DDL/DML, used to instruct the DBMS precisely) with a "database
+        interface" (the friendly front-end that ordinary users interact with). Interfaces exist specifically
+        so that non-technical users never have to write DDL or DML themselves.
+      </p>
+    </div>
+
+    <div class="callout callout-trick">
+      <div class="callout-label">&#128161; Memory Trick</div>
+      <p><strong>"DDL Defines, DML Does."</strong> DDL = Define the structure. DML = Do something with the data.</p>
+    </div>
+  </section>
+
+  <!-- 9. OVERALL STRUCTURE -->
+  <section class="topic-block" id="overall-structure">
+    <div class="topic-kicker">Section 09</div>
+    <h2>Overall Database Structure</h2>
+    <p>Zooming out, here is how all the pieces of a DBMS fit together, from the user typing a query to the data sitting on disk.</p>
+
+    <div class="callout callout-analogy">
+      <div class="callout-label">&#128161; Real-Life Analogy</div>
+      <p>
+        Picture a busy restaurant kitchen. A waiter (user) takes your order and hands it to the kitchen
+        manager (query processor), who breaks it down into tasks and decides the fastest way to prepare it
+        (query optimizer). The manager then instructs the actual cooks and store-room staff (storage manager)
+        to fetch ingredients (data) from the fridge and pantry (physical storage). You, the customer, never
+        walk into the kitchen &mdash; you just get your plate. A DBMS is organised exactly like this, with
+        every layer having one clear job.
+      </p>
+    </div>
+
+    <div class="diagram-frame">
+      <svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Overall database management system structure flowchart">
+        <rect x="260" y="10" width="160" height="36" rx="6" style="fill:var(--surface-2);stroke:var(--teal)"/>
+        <text x="340" y="33" text-anchor="middle" style="font:600 11px monospace;fill:var(--teal)">Naive / DBA / App Users</text>
+        <line x1="340" y1="46" x2="340" y2="72" style="stroke:var(--border)" marker-end="url(#a4)"/>
+
+        <rect x="220" y="74" width="240" height="36" rx="6" style="fill:var(--surface-2);stroke:var(--accent)"/>
+        <text x="340" y="97" text-anchor="middle" style="font:600 11px monospace;fill:var(--accent)">Query Processor</text>
+        <line x1="340" y1="110" x2="340" y2="136" style="stroke:var(--border)" marker-end="url(#a4)"/>
+
+        <rect x="40" y="138" width="150" height="34" rx="6" style="fill:var(--bg-raise);stroke:var(--border)"/>
+        <text x="115" y="159" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">DDL Interpreter</text>
+        <rect x="265" y="138" width="150" height="34" rx="6" style="fill:var(--bg-raise);stroke:var(--border)"/>
+        <text x="340" y="159" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">DML Compiler</text>
+        <rect x="490" y="138" width="150" height="34" rx="6" style="fill:var(--bg-raise);stroke:var(--border)"/>
+        <text x="565" y="159" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">Query Optimizer</text>
+
+        <line x1="115" y1="172" x2="330" y2="210" style="stroke:var(--border)" marker-end="url(#a4)"/>
+        <line x1="340" y1="172" x2="340" y2="210" style="stroke:var(--border)" marker-end="url(#a4)"/>
+        <line x1="565" y1="172" x2="350" y2="210" style="stroke:var(--border)" marker-end="url(#a4)"/>
+
+        <rect x="220" y="212" width="240" height="36" rx="6" style="fill:var(--surface-2);stroke:var(--accent)"/>
+        <text x="340" y="235" text-anchor="middle" style="font:600 11px monospace;fill:var(--accent)">Storage Manager</text>
+        <line x1="340" y1="248" x2="340" y2="274" style="stroke:var(--border)" marker-end="url(#a4)"/>
+
+        <rect x="150" y="276" width="150" height="34" rx="6" style="fill:var(--bg-raise);stroke:var(--border)"/>
+        <text x="225" y="297" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">Buffer Manager</text>
+        <rect x="380" y="276" width="150" height="34" rx="6" style="fill:var(--bg-raise);stroke:var(--border)"/>
+        <text x="455" y="297" text-anchor="middle" style="font:10px monospace;fill:var(--text-dim)">File Manager</text>
+
+        <line x1="225" y1="310" x2="280" y2="345" style="stroke:var(--border)" marker-end="url(#a4)"/>
+        <line x1="455" y1="310" x2="400" y2="345" style="stroke:var(--border)" marker-end="url(#a4)"/>
+
+        <rect x="200" y="347" width="280" height="42" rx="6" style="fill:var(--bg-raise);stroke:var(--teal)"/>
+        <text x="340" y="366" text-anchor="middle" style="font:600 11px monospace;fill:var(--teal)">Physical Storage</text>
+        <text x="340" y="382" text-anchor="middle" style="font:9px monospace;fill:var(--text-faint)">Data files &middot; Indices &middot; Data Dictionary</text>
+
+        <defs><marker id="a4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" style="fill:var(--border)"/></marker></defs>
+      </svg>
+      <div class="diagram-caption">Fig 1.4 — Query Processor and Storage Manager are the two engines inside every DBMS</div>
+    </div>
+
+    <table class="data-table">
+      <thead><tr><th>Component</th><th>Job</th></tr></thead>
+      <tbody>
+        <tr><td>DDL Interpreter</td><td>Reads DDL statements (CREATE/ALTER/DROP) and records the resulting structure in the data dictionary</td></tr>
+        <tr><td>DML Compiler</td><td>Translates your DML statements (SELECT/INSERT/UPDATE/DELETE) into low-level instructions the DBMS engine can execute</td></tr>
+        <tr><td>Query Optimizer</td><td>Chooses the fastest available way to run a query out of several possible execution plans</td></tr>
+        <tr><td>Query Processor</td><td>The umbrella component that parses, compiles and optimizes the query you write</td></tr>
+        <tr><td>Buffer Manager</td><td>Keeps a working copy of recently used data in fast memory (RAM) so the disk isn't hit for every request</td></tr>
+        <tr><td>File Manager</td><td>Manages the actual allocation of space on disk for database files</td></tr>
+        <tr><td>Storage Manager</td><td>The umbrella component that talks to the operating system to actually fetch/write data on disk</td></tr>
+        <tr><td>Data Dictionary</td><td>The database's "dictionary about itself" &mdash; stores schema, constraints, and metadata (not user data itself)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-mistake">
+      <div class="callout-label">&#9888; Common Mistake</div>
+      <p>
+        Students sometimes describe the data dictionary as "just another table of user data". It is not.
+        The data dictionary stores <strong>metadata</strong> &mdash; data about the data, such as column
+        names, data types, and constraints &mdash; never the actual student records or transactions
+        themselves.
+      </p>
+    </div>
+  </section>
+
+  <!-- 10. MEMORY TRICKS -->
+  <section class="topic-block" id="memory-tricks">
+    <div class="topic-kicker">Section 10</div>
+    <h2>Memory Tricks</h2>
+    <div class="callout callout-trick">
+      <div class="callout-label">&#128161; Trick 1 — The 3 Levels</div>
+      <p><strong>"E-C-I, top to bottom"</strong> — External sees, Conceptual connects, Internal stores. Say it in that order and you'll never mix up the architecture diagram.</p>
+    </div>
+    <div class="callout callout-trick">
+      <div class="callout-label">&#128161; Trick 2 — Schema vs Instance</div>
+      <p><strong>"Schema is the Skeleton, Instance is the Info."</strong> Both start with the sound of the thing they represent.</p>
+    </div>
+    <div class="callout callout-trick">
+      <div class="callout-label">&#128161; Trick 3 — Data Independence</div>
+      <p><strong>"Physical is at the Pit (bottom), Logical is a Little higher."</strong> Physical independence protects the conceptual level from internal (bottom) changes; logical independence protects the external level from conceptual (middle) changes.</p>
+    </div>
+    <div class="callout callout-trick">
+      <div class="callout-label">&#128161; Trick 4 — DBMS Advantages Over File System</div>
+      <p><strong>"RICSBC"</strong> — Redundancy reduced, Integrity enforced, Consistency maintained, Sharing enabled, Backup automated, Concurrency controlled. Seven advantages, one word to recall them all.</p>
+    </div>
+    <div class="callout callout-trick">
+      <div class="callout-label">&#128161; Trick 5 — Overall Structure</div>
+      <p><strong>"Query in, Query out; Storage in, Storage out."</strong> Every request first passes through the Query Processor (top half) and then the Storage Manager (bottom half) before touching physical disk. Two halves, two managers.</p>
+    </div>
+  </section>
+
+  <!-- 11. EXAM POINTS -->
+  <section class="topic-block" id="exam-points">
+    <div class="topic-kicker">Section 11</div>
+    <h2>Important Exam Points</h2>
+    <ul class="exam-list">
+      <li>Logical data independence is harder to achieve than physical data independence — examiners love this line.</li>
+      <li>The three levels, in order, are External &rarr; Conceptual &rarr; Internal. Getting the order backward is the most common mistake.</li>
+      <li>Schema = structure (rarely changes). Instance = data at a moment (changes constantly). Always give an example in your answer.</li>
+      <li>DDL commands: <code>CREATE, ALTER, DROP</code>. DML commands: <code>SELECT, INSERT, UPDATE, DELETE</code>. Know both lists cold.</li>
+      <li>Advantages of DBMS over file systems is a classic 5-mark question — be ready to list at least 5 points from the comparison table above with one-line explanations.</li>
+      <li>Data dictionary stores "data about data" (metadata) — not the actual user data itself.</li>
+      <li>File system problems to name from memory: redundancy, inconsistency, difficult access, isolation, integrity issues, atomicity issues, concurrency anomalies, weak security. Pick any 5 for a "list the disadvantages" question.</li>
+      <li>Data model, schema and instance are three different things — data model is the design language, schema is one particular structure, instance is the data at a moment. Do not use these words interchangeably in answers.</li>
+    </ul>
+  </section>
+
+  <!-- 12. FAQs -->
+  <section class="topic-block" id="faqs">
+    <div class="topic-kicker">Section 12</div>
+    <h2>Frequently Asked Questions</h2>
+    <div id="faq-container"></div>
+  </section>
+
+  <!-- 13. PYQ FOCUS -->
+  <section class="topic-block" id="pyq">
+    <div class="topic-kicker">Section 13</div>
+    <h2>Previous Year Question Focus</h2>
+    <p>Recurring question patterns from this topic in AKTU papers, so you know exactly what to prepare.</p>
+    <table class="data-table">
+      <thead><tr><th>Question Pattern</th><th>Typical Marks</th><th>How Often</th></tr></thead>
+      <tbody>
+        <tr><td>Explain the three-level database architecture with a diagram</td><td>7&ndash;10</td><td>Very High</td></tr>
+        <tr><td>Differentiate between DBMS and File System</td><td>5&ndash;7</td><td>Very High</td></tr>
+        <tr><td>Define data independence. Explain its types.</td><td>5&ndash;7</td><td>High</td></tr>
+        <tr><td>What is a schema? How is it different from an instance?</td><td>2&ndash;5</td><td>High</td></tr>
+        <tr><td>List and explain DDL and DML commands with examples</td><td>2&ndash;5</td><td>Medium</td></tr>
+        <tr><td>Explain the overall structure / components of a DBMS</td><td>5&ndash;7</td><td>Medium</td></tr>
+        <tr><td>List the disadvantages of the traditional file processing system</td><td>2&ndash;5</td><td>Medium</td></tr>
+        <tr><td>What are database interfaces? Name and explain any two.</td><td>2&ndash;5</td><td>Low&ndash;Medium</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 14. REVISION NOTES -->
+  <section class="topic-block" id="revision">
+    <div class="topic-kicker">Section 14</div>
+    <h2>Quick Revision Notes</h2>
+    <div class="revision-box">
+      <ul>
+        <li>Database = organised data. DBMS = software to manage it.</li>
+        <li>DBMS beats file systems on: redundancy, consistency, sharing, security, independence, backup, concurrency.</li>
+        <li>Three levels: External (user view) &rarr; Conceptual (overall logical design) &rarr; Internal (physical storage).</li>
+        <li>Data model = design language. Schema = structure (stable). Instance = data snapshot (changes often).</li>
+        <li>Physical independence: internal changes don't affect conceptual level. Logical independence: conceptual changes don't affect external level. Logical is harder.</li>
+        <li>DDL defines structure (CREATE/ALTER/DROP). DML handles data (SELECT/INSERT/UPDATE/DELETE).</li>
+        <li>DBMS structure = Query Processor (DDL interpreter, DML compiler, optimizer) + Storage Manager (buffer manager, file manager) sitting over physical storage + data dictionary.</li>
+        <li>File systems suffer from: redundancy, inconsistency, difficult access, isolation, integrity problems, atomicity problems, concurrency anomalies, weak security.</li>
+        <li>Database interfaces (menu-based, form-based, GUI, natural language) exist so non-technical users never need to write DDL/DML directly.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 15. SUMMARY -->
+  <section class="topic-block" id="summary">
+    <div class="topic-kicker">Section 15</div>
+    <h2>Chapter Summary</h2>
+    <p>
+      A DBMS exists to fix the redundancy, inconsistency and fragility of plain file systems by centralising
+      data behind one controlled layer. It achieves this using a three-level architecture that separates what
+      users see (external), what the data actually means (conceptual), and how it's stored (internal) &mdash;
+      and this separation is exactly what gives us physical and logical data independence. Every schema
+      describes structure; every instance is a live snapshot of data inside that structure. Finally, DDL and
+      DML are the two core languages you use to build and operate on that structure, run through a DBMS's
+      query processor and storage manager down to physical disk. Master this chapter and Unit&nbsp;I's ER
+      model chapters (2 &amp; 3) will click much faster.
+    </p>
+  </section>
+
+  <!-- 16. PRACTICE QUESTIONS -->
+  <section class="topic-block" id="practice">
+    <div class="topic-kicker">Section 16</div>
+    <h2>Practice Questions</h2>
+    <ol class="practice-list">
+      <li>Define DBMS. List any five advantages of a DBMS over a traditional file system. <span class="marks-tag">7 marks</span></li>
+      <li>Draw and explain the three-level (ANSI-SPARC) database architecture. <span class="marks-tag">7 marks</span></li>
+      <li>What is data independence? Differentiate between physical and logical data independence with examples. <span class="marks-tag">5 marks</span></li>
+      <li>Differentiate between schema and instance with a suitable example. <span class="marks-tag">5 marks</span></li>
+      <li>What are DDL and DML? Give two example commands of each. <span class="marks-tag">2 marks</span></li>
+      <li>Explain the overall structure of a DBMS with the help of a diagram. <span class="marks-tag">7 marks</span></li>
+      <li>Why is logical data independence harder to achieve than physical data independence? <span class="marks-tag">2 marks</span></li>
+      <li>List the different types of database interfaces available to users. <span class="marks-tag">2 marks</span></li>
+      <li>Explain, with an example, how atomicity problems occur in a file processing system but are avoided in a DBMS. <span class="marks-tag">5 marks</span></li>
+      <li>Differentiate between a data model, a schema, and an instance, using one running example throughout. <span class="marks-tag">5 marks</span></li>
+    </ol>
+  </section>
+
+  <!-- 17. QUIZ -->
+  <section class="topic-block" id="quiz">
+    <div class="topic-kicker">Section 17</div>
+    <h2>Self-Test Quiz</h2>
+    <p>Quick 8-question check. Pick an answer to see if you're right — this is scored only in your browser, nothing is sent anywhere.</p>
+    <div id="quiz-container"></div>
+    <div class="quiz-result-bar">
+      <span>Your score</span>
+      <span class="score" id="quiz-score">0 / 8</span>
+    </div>
+  </section>
+
+  <!-- 18. CHECKLIST -->
+  <section class="topic-block" id="checklist">
+    <div class="topic-kicker">Section 18</div>
+    <h2>Chapter Checklist</h2>
+    <ul class="checklist" id="chapter-checklist"></ul>
+  </section>
+
+  <!-- MARK COMPLETE -->
+  <section class="topic-block" style="border-bottom:none;">
+    <div class="complete-panel">
+      <h3>Done with Chapter 1?</h3>
+      <p>Marking this complete updates your Progress Tracker on the home page automatically.</p>
+      <button class="btn" id="mark-complete-btn">Mark Chapter Complete</button>
+      <div class="complete-status" id="complete-status">&#10003; Chapter 1 marked complete. Great work!</div>
+    </div>
+  </section>
+
+  <nav class="chapter-nav">
+    <a class="chapter-nav-btn disabled" href="#"><span class="dir">&larr; PREVIOUS</span>You're at the start</a>
+    <a class="chapter-nav-btn disabled" href="#"><span class="dir">NEXT &rarr;</span>Chapter 2 — coming soon</a>
+  </nav>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    Chapter 1 of 22 &middot; Unit I &middot; <a href="index.html#tracker">Back to Progress Tracker</a>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/chapter1.js"></script>
+</body>
+</html>
