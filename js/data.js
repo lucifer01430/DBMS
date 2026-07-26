@@ -17,7 +17,7 @@ const CHAPTERS = [
   {
     id: 1, unit: 1, name: "Introduction to Database Systems",
     topics: "Overview \u00b7 DB System vs File System \u00b7 DB Concept & Architecture \u00b7 Data Model, Schema & Instances \u00b7 Data Independence \u00b7 Database Languages & Interfaces \u00b7 DDL \u00b7 DML \u00b7 Overall Database Structure",
-    difficulty: "Beginner", time: "2.5 hrs", file: "chapter1.html", available: true
+    difficulty: "Beginner", time: "2.5 hrs", file: "unit-1/chapter1.html", available: true
   },
   {
     id: 2, unit: 1, name: "ER Model \u2014 Concepts, Notation & Keys",
