@@ -161,16 +161,18 @@ function renderQuiz() {
 /* ---------- CHECKLIST ---------- */
 
 const CHECKLIST_ITEMS = [
-  "I can explain what a DBMS is in my own words",
-  "I can list 5+ advantages of DBMS over a file system",
-  "I can draw the three-level architecture from memory",
-  "I can explain schema vs instance with an example",
-  "I can explain physical vs logical data independence",
-  "I know which commands are DDL and which are DML",
-  "I can sketch the overall DBMS structure diagram",
-  "I have attempted all practice questions",
-  "I can list at least 5 concrete problems of file systems (redundancy, inconsistency, etc.)",
-  "I can explain the difference between data, information, database, and DBMS",
+  "I should know the difference between data, information, database, and DBMS",
+  "I should know why file systems create redundancy, inconsistency, difficult access, isolation, integrity, atomicity, concurrency, and security problems",
+  "I should know the difference between DBMS and file system in table form",
+  "I should know the three levels of database architecture in order: external, conceptual, internal",
+  "I should remember that schema means structure and instance means current data",
+  "I should remember physical data independence and logical data independence with examples",
+  "I should remember DDL commands and DML commands separately",
+  "I should remember the roles of query processor, storage manager, and data dictionary",
+  "I should revise all important terminologies before the exam",
+  "I should revise the 2-mark, 5-mark, 10-mark, and most repeated university questions",
+  "I should attempt the easy, medium, and hard practice questions",
+  "I should be able to draw the architecture and overall DBMS structure diagrams without looking",
 ];
 
 const CHECKLIST_KEY = "dbms_course_ch1_checklist_v1";

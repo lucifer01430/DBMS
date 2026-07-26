@@ -218,6 +218,39 @@
 .example-card .ex-tag { font-family: var(--font-mono); font-size: 0.68rem; color: var(--teal); text-transform: uppercase; margin-bottom: 6px; display: block; }
 .example-card p { margin: 0; font-size: 0.88rem; }
 
+.term-grid,
+.question-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 18px 0;
+}
+.term-card,
+.question-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+.term-card h3,
+.question-card h3 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--text);
+}
+.term-card p,
+.question-card p,
+.question-card li {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+.question-card ul,
+.question-card ol {
+  margin-bottom: 0;
+}
+
 /* Diagram frame */
 .diagram-frame {
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);

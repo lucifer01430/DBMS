@@ -12,6 +12,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/chapter.css">
+<link rel="icon" type="image/png" href="../img/favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="../img/favicon/favicon.svg" />
+<link rel="shortcut icon" href="../img/favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicon/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="DBMS" />
+<link rel="manifest" href="../img/favicon/site.webmanifest" />
 </head>
 <body>
 <div class="reading-progress" aria-hidden="true"><div id="reading-progress-fill"></div></div>
@@ -71,15 +77,17 @@
         <a href="#terminologies">11. Important Terminologies</a>
         <a href="#key-points">12. Key Points</a>
         <a href="#exam-points">13. Important Exam Points</a>
-        <a href="#memory-tricks">14. Memory Tricks</a>
-        <a href="#revision">15. Quick Revision Notes</a>
-        <a href="#summary">16. Chapter Summary</a>
-        <a href="#practice">17. Practice Questions</a>
-        <a href="#university-questions">18. University Questions</a>
-        <a href="#quiz">19. Self Assessment Quiz</a>
-        <a href="#interview">20. Interview Fundamentals</a>
-        <a href="#checklist">21. Chapter Checklist</a>
-        <a href="#chapter-end">22. What You Learned</a>
+        <a href="#common-mistakes">14. Common Mistakes</a>
+        <a href="#memory-tricks">15. Memory Tricks</a>
+        <a href="#faqs">16. FAQs</a>
+        <a href="#revision">17. Quick Revision Notes</a>
+        <a href="#summary">18. Chapter Summary</a>
+        <a href="#practice">19. Practice Questions</a>
+        <a href="#university-questions">20. University Questions</a>
+        <a href="#quiz">21. Self Assessment Quiz</a>
+        <a href="#interview">22. Interview Fundamentals</a>
+        <a href="#checklist">23. Chapter Checklist</a>
+        <a href="#chapter-end">24. What You Learned</a>
       </div>
     </div>
   </div>
@@ -102,9 +110,16 @@
       <a href="#overall-structure">Overall Structure</a>
       <a href="#terminologies">Terminologies</a>
       <a href="#key-points">Key Points</a>
+      <a href="#exam-points">Exam Points</a>
+      <a href="#common-mistakes">Common Mistakes</a>
+      <a href="#memory-tricks">Memory Tricks</a>
+      <a href="#faqs">FAQs</a>
       <a href="#revision">Quick Revision</a>
       <a href="#practice">Practice</a>
-      <a href="#quiz">Self-Test Quiz</a>
+      <a href="#university-questions">University Questions</a>
+      <a href="#quiz">Self Assessment</a>
+      <a href="#interview">Interview Basics</a>
+      <a href="#checklist">Checklist</a>
       <a href="#chapter-end">Chapter End</a>
     </nav>
   </aside>
@@ -216,6 +231,15 @@
       </p>
     </div>
 
+    <h3>Complete Explanation: The Idea in One Flow</h3>
+    <p>
+      This chapter moves from the smallest idea to the complete system. First, you understand raw data and
+      organised information. Then you see why separate files become unreliable. After that, you learn how a
+      DBMS solves those problems using architecture, schemas, instances, data independence, languages,
+      interfaces, and internal components. Nothing in this chapter is isolated; every concept explains one
+      part of the same question: <strong>how can data be stored and used safely by many people?</strong>
+    </p>
+
     <h3>Step-by-Step: What Actually Happens When You "Use" a Database</h3>
     <ol class="step-list">
       <li><strong>You make a request.</strong> Example: you open a college portal and click "Show my attendance".</li>
@@ -274,7 +298,7 @@
 
   <!-- 4. DB vs FILE SYSTEM -->
   <section class="topic-block" id="db-vs-file">
-    <div class="topic-kicker">Section 04</div>
+    <div class="topic-kicker">Section 05</div>
     <h2>Database System vs File System</h2>
     <p>
       Before DBMS existed, programs stored data directly in files (like <code>.txt</code> or <code>.dat</code> files),
@@ -395,7 +419,7 @@
 
   <!-- 5. ARCHITECTURE -->
   <section class="topic-block" id="architecture">
-    <div class="topic-kicker">Section 05</div>
+    <div class="topic-kicker">Section 06</div>
     <h2>Database System Concept &amp; Architecture</h2>
     <p>
       A DBMS separates <em>how data looks to a user</em> from <em>how data is actually stored</em>. This is
@@ -502,7 +526,7 @@
 
   <!-- 6. SCHEMA / INSTANCE -->
   <section class="topic-block" id="schema-instance">
-    <div class="topic-kicker">Section 06</div>
+    <div class="topic-kicker">Section 07</div>
     <h2>Data Models, Schema &amp; Instances</h2>
 
     <h3>Data Model</h3>
@@ -582,7 +606,7 @@
 
   <!-- 7. DATA INDEPENDENCE -->
   <section class="topic-block" id="independence">
-    <div class="topic-kicker">Section 07</div>
+    <div class="topic-kicker">Section 08</div>
     <h2>Data Independence</h2>
     <p>
       <strong>Data independence</strong> is the ability to change the schema at one level of the database
@@ -655,7 +679,7 @@
 
   <!-- 8. LANGUAGES & INTERFACES -->
   <section class="topic-block" id="languages">
-    <div class="topic-kicker">Section 08</div>
+    <div class="topic-kicker">Section 09</div>
     <h2>Database Languages &amp; Interfaces</h2>
     <p>A DBMS provides specialised languages to talk to the database. Unit&nbsp;I focuses on two of them:</p>
 
@@ -751,7 +775,7 @@
 
   <!-- 9. OVERALL STRUCTURE -->
   <section class="topic-block" id="overall-structure">
-    <div class="topic-kicker">Section 09</div>
+    <div class="topic-kicker">Section 10</div>
     <h2>Overall Database Structure</h2>
     <p>Zooming out, here is how all the pieces of a DBMS fit together, from the user typing a query to the data sitting on disk.</p>
 
@@ -836,7 +860,7 @@
 
   <!-- 10. IMPORTANT TERMINOLOGIES -->
   <section class="topic-block" id="terminologies">
-    <div class="topic-kicker">Section 10</div>
+    <div class="topic-kicker">Section 11</div>
     <h2>Important Terminologies</h2>
     <p>These words appear repeatedly in database questions. Learn the meaning, not just the spelling.</p>
     <div class="term-grid">
@@ -860,7 +884,7 @@
 
   <!-- 11. KEY POINTS -->
   <section class="topic-block" id="key-points">
-    <div class="topic-kicker">Section 11</div>
+    <div class="topic-kicker">Section 12</div>
     <h2>Key Points</h2>
     <ul class="exam-list">
       <li>A database system exists because raw files become difficult to manage when data grows and many users access it.</li>
@@ -874,9 +898,57 @@
     </ul>
   </section>
 
-  <!-- 10. MEMORY TRICKS -->
+  <!-- 13. EXAM POINTS -->
+  <section class="topic-block" id="exam-points">
+    <div class="topic-kicker">Section 13</div>
+    <h2>Important Exam Points</h2>
+    <ul class="exam-list">
+      <li>Logical data independence is harder to achieve than physical data independence — examiners love this line.</li>
+      <li>The three levels, in order, are External &rarr; Conceptual &rarr; Internal. Getting the order backward is the most common mistake.</li>
+      <li>Schema = structure (rarely changes). Instance = data at a moment (changes constantly). Always give an example in your answer.</li>
+      <li>DDL commands: <code>CREATE, ALTER, DROP</code>. DML commands: <code>SELECT, INSERT, UPDATE, DELETE</code>. Know both lists cold.</li>
+      <li>Advantages of DBMS over file systems is a classic 5-mark question — be ready to list at least 5 points from the comparison table above with one-line explanations.</li>
+      <li>Data dictionary stores "data about data" (metadata) — not the actual user data itself.</li>
+      <li>File system problems to name from memory: redundancy, inconsistency, difficult access, isolation, integrity issues, atomicity issues, concurrency anomalies, weak security. Pick any 5 for a "list the disadvantages" question.</li>
+      <li>Data model, schema and instance are three different things — data model is the design language, schema is one particular structure, instance is the data at a moment. Do not use these words interchangeably in answers.</li>
+    </ul>
+  </section>
+
+  <!-- 14. COMMON MISTAKES -->
+  <section class="topic-block" id="common-mistakes">
+    <div class="topic-kicker">Section 14</div>
+    <h2>Common Mistakes</h2>
+    <div class="question-grid">
+      <div class="question-card">
+        <h3>Database and DBMS mixed together</h3>
+        <p>Write database for the stored data and DBMS for the software that manages it. MySQL is a DBMS; the student records inside it are a database.</p>
+      </div>
+      <div class="question-card">
+        <h3>Schema and instance confused</h3>
+        <p>Schema is the table design. Instance is the current rows. Adding a row changes the instance, not the schema.</p>
+      </div>
+      <div class="question-card">
+        <h3>Three-level architecture written backward</h3>
+        <p>The top-to-bottom order is External, Conceptual, Internal. Do not start with internal unless the question specifically asks bottom-up.</p>
+      </div>
+      <div class="question-card">
+        <h3>DDL and DML commands mixed</h3>
+        <p>DDL changes structure. DML works with data. <code>CREATE TABLE</code> is DDL; <code>UPDATE</code> is DML.</p>
+      </div>
+      <div class="question-card">
+        <h3>Data dictionary treated as user data</h3>
+        <p>The data dictionary stores metadata such as table names, column types, and constraints. It does not mean the actual student or bank records.</p>
+      </div>
+      <div class="question-card">
+        <h3>Only listing file-system problems</h3>
+        <p>In 5-mark and 10-mark answers, do not only list points. Explain each problem with one line and, if possible, one example.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15. MEMORY TRICKS -->
   <section class="topic-block" id="memory-tricks">
-    <div class="topic-kicker">Section 12</div>
+    <div class="topic-kicker">Section 15</div>
     <h2>Memory Tricks</h2>
     <div class="callout callout-trick">
       <div class="callout-label">&#128161; Trick 1 — The 3 Levels</div>
@@ -900,52 +972,16 @@
     </div>
   </section>
 
-  <!-- 11. EXAM POINTS -->
-  <section class="topic-block" id="exam-points">
-    <div class="topic-kicker">Section 11</div>
-    <h2>Important Exam Points</h2>
-    <ul class="exam-list">
-      <li>Logical data independence is harder to achieve than physical data independence — examiners love this line.</li>
-      <li>The three levels, in order, are External &rarr; Conceptual &rarr; Internal. Getting the order backward is the most common mistake.</li>
-      <li>Schema = structure (rarely changes). Instance = data at a moment (changes constantly). Always give an example in your answer.</li>
-      <li>DDL commands: <code>CREATE, ALTER, DROP</code>. DML commands: <code>SELECT, INSERT, UPDATE, DELETE</code>. Know both lists cold.</li>
-      <li>Advantages of DBMS over file systems is a classic 5-mark question — be ready to list at least 5 points from the comparison table above with one-line explanations.</li>
-      <li>Data dictionary stores "data about data" (metadata) — not the actual user data itself.</li>
-      <li>File system problems to name from memory: redundancy, inconsistency, difficult access, isolation, integrity issues, atomicity issues, concurrency anomalies, weak security. Pick any 5 for a "list the disadvantages" question.</li>
-      <li>Data model, schema and instance are three different things — data model is the design language, schema is one particular structure, instance is the data at a moment. Do not use these words interchangeably in answers.</li>
-    </ul>
-  </section>
-
-  <!-- 12. FAQs -->
+  <!-- 16. FAQs -->
   <section class="topic-block" id="faqs">
-    <div class="topic-kicker">Section 12</div>
+    <div class="topic-kicker">Section 16</div>
     <h2>Frequently Asked Questions</h2>
     <div id="faq-container"></div>
   </section>
 
-  <!-- 13. PYQ FOCUS -->
-  <section class="topic-block" id="pyq">
-    <div class="topic-kicker">Section 13</div>
-    <h2>Previous Year Question Focus</h2>
-    <p>Recurring exam question patterns from this topic, so you know exactly what to prepare.</p>
-    <table class="data-table">
-      <thead><tr><th>Question Pattern</th><th>Typical Marks</th><th>How Often</th></tr></thead>
-      <tbody>
-        <tr><td>Explain the three-level database architecture with a diagram</td><td>7&ndash;10</td><td>Very High</td></tr>
-        <tr><td>Differentiate between DBMS and File System</td><td>5&ndash;7</td><td>Very High</td></tr>
-        <tr><td>Define data independence. Explain its types.</td><td>5&ndash;7</td><td>High</td></tr>
-        <tr><td>What is a schema? How is it different from an instance?</td><td>2&ndash;5</td><td>High</td></tr>
-        <tr><td>List and explain DDL and DML commands with examples</td><td>2&ndash;5</td><td>Medium</td></tr>
-        <tr><td>Explain the overall structure / components of a DBMS</td><td>5&ndash;7</td><td>Medium</td></tr>
-        <tr><td>List the disadvantages of the traditional file processing system</td><td>2&ndash;5</td><td>Medium</td></tr>
-        <tr><td>What are database interfaces? Name and explain any two.</td><td>2&ndash;5</td><td>Low&ndash;Medium</td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- 14. REVISION NOTES -->
+  <!-- 17. REVISION NOTES -->
   <section class="topic-block" id="revision">
-    <div class="topic-kicker">Section 14</div>
+    <div class="topic-kicker">Section 17</div>
     <h2>Quick Revision Notes</h2>
     <div class="revision-box">
       <ul>
@@ -962,9 +998,9 @@
     </div>
   </section>
 
-  <!-- 15. SUMMARY -->
+  <!-- 18. SUMMARY -->
   <section class="topic-block" id="summary">
-    <div class="topic-kicker">Section 15</div>
+    <div class="topic-kicker">Section 18</div>
     <h2>Chapter Summary</h2>
     <p>
       A DBMS exists to fix the redundancy, inconsistency and fragility of plain file systems by centralising
@@ -978,28 +1014,67 @@
     </p>
   </section>
 
-  <!-- 16. PRACTICE QUESTIONS -->
+  <!-- 19. PRACTICE QUESTIONS -->
   <section class="topic-block" id="practice">
-    <div class="topic-kicker">Section 16</div>
+    <div class="topic-kicker">Section 19</div>
     <h2>Practice Questions</h2>
-    <ol class="practice-list">
-      <li>Define DBMS. List any five advantages of a DBMS over a traditional file system. <span class="marks-tag">7 marks</span></li>
-      <li>Draw and explain the three-level (ANSI-SPARC) database architecture. <span class="marks-tag">7 marks</span></li>
-      <li>What is data independence? Differentiate between physical and logical data independence with examples. <span class="marks-tag">5 marks</span></li>
-      <li>Differentiate between schema and instance with a suitable example. <span class="marks-tag">5 marks</span></li>
-      <li>What are DDL and DML? Give two example commands of each. <span class="marks-tag">2 marks</span></li>
-      <li>Explain the overall structure of a DBMS with the help of a diagram. <span class="marks-tag">7 marks</span></li>
-      <li>Why is logical data independence harder to achieve than physical data independence? <span class="marks-tag">2 marks</span></li>
-      <li>List the different types of database interfaces available to users. <span class="marks-tag">2 marks</span></li>
-      <li>Explain, with an example, how atomicity problems occur in a file processing system but are avoided in a DBMS. <span class="marks-tag">5 marks</span></li>
-      <li>Differentiate between a data model, a schema, and an instance, using one running example throughout. <span class="marks-tag">5 marks</span></li>
-    </ol>
+    <div class="question-grid">
+      <div class="question-card">
+        <h3>Easy</h3>
+        <ol class="practice-list">
+          <li>Define data, information, database, and DBMS.</li>
+          <li>Write any four examples of database applications in daily life.</li>
+          <li>List any five problems of the traditional file system.</li>
+          <li>Write two DDL commands and two DML commands.</li>
+        </ol>
+      </div>
+      <div class="question-card">
+        <h3>Medium</h3>
+        <ol class="practice-list">
+          <li>Differentiate between DBMS and file system using a table.</li>
+          <li>Explain schema and instance with a Student table example.</li>
+          <li>Explain physical and logical data independence with one example each.</li>
+          <li>Explain database languages and database interfaces.</li>
+        </ol>
+      </div>
+      <div class="question-card">
+        <h3>Hard</h3>
+        <ol class="practice-list">
+          <li>Draw and explain the three-level database architecture. Also show how it supports data independence.</li>
+          <li>Explain the overall DBMS structure with query processor, storage manager, data files, indexes, and data dictionary.</li>
+          <li>Using a bank transfer example, explain why atomicity and concurrent access control are difficult in file systems.</li>
+          <li>Compare data model, schema, and instance using one complete running example.</li>
+        </ol>
+      </div>
+    </div>
   </section>
 
-  <!-- 17. QUIZ -->
+  <!-- 20. UNIVERSITY QUESTIONS -->
+  <section class="topic-block" id="university-questions">
+    <div class="topic-kicker">Section 20</div>
+    <h2>University Questions</h2>
+    <p>These are syllabus-aligned question patterns from this chapter. Use them for answer-writing practice.</p>
+    <table class="data-table">
+      <thead><tr><th>Category</th><th>Question Pattern</th><th>Answer Focus</th></tr></thead>
+      <tbody>
+        <tr><td>2 Marks</td><td>Define DBMS.</td><td>Software that manages a database; mention storage, retrieval, update, and protection.</td></tr>
+        <tr><td>2 Marks</td><td>Differentiate schema and instance.</td><td>Schema is structure; instance is current data snapshot.</td></tr>
+        <tr><td>2 Marks</td><td>Give two examples of DDL and DML commands.</td><td>DDL: CREATE, ALTER, DROP. DML: SELECT, INSERT, UPDATE, DELETE.</td></tr>
+        <tr><td>5 Marks</td><td>Explain data independence and its types.</td><td>Define data independence; explain physical and logical with examples.</td></tr>
+        <tr><td>5 Marks</td><td>Explain disadvantages of file processing systems.</td><td>Redundancy, inconsistency, difficult access, isolation, integrity, atomicity, concurrency, security.</td></tr>
+        <tr><td>5 Marks</td><td>Explain database languages and interfaces.</td><td>DDL, DML, and user interfaces such as menu, form, GUI, and natural language.</td></tr>
+        <tr><td>10 Marks</td><td>Explain the three-level database architecture with a neat diagram.</td><td>External, conceptual, internal levels; mappings; data independence.</td></tr>
+        <tr><td>10 Marks</td><td>Explain the overall structure of a DBMS with a diagram.</td><td>Users, query processor, DDL interpreter, DML compiler, optimizer, storage manager, files, data dictionary.</td></tr>
+        <tr><td>Most Repeated</td><td>Differentiate between DBMS and File System.</td><td>Use a table; include redundancy, consistency, sharing, security, concurrency, backup, and independence.</td></tr>
+        <tr><td>Most Repeated</td><td>Explain schema, instance, and data model with examples.</td><td>Use one running example such as a Student table.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 21. QUIZ -->
   <section class="topic-block" id="quiz">
-    <div class="topic-kicker">Section 17</div>
-    <h2>Self-Test Quiz</h2>
+    <div class="topic-kicker">Section 21</div>
+    <h2>Self Assessment Quiz</h2>
     <p>Quick 8-question check. Pick an answer to see if you're right — this is scored only in your browser, nothing is sent anywhere.</p>
     <div id="quiz-container"></div>
     <div class="quiz-result-bar">
@@ -1008,11 +1083,65 @@
     </div>
   </section>
 
-  <!-- 18. CHECKLIST -->
+  <!-- 22. INTERVIEW FUNDAMENTALS -->
+  <section class="topic-block" id="interview">
+    <div class="topic-kicker">Section 22</div>
+    <h2>Interview Fundamentals</h2>
+    <p>
+      These are only the interview basics directly connected to this chapter. They do not go outside the
+      Unit&nbsp;I introduction syllabus.
+    </p>
+    <div class="question-grid">
+      <div class="question-card">
+        <h3>Explain DBMS in one minute</h3>
+        <p>A DBMS is software that manages a database. It stores data, retrieves it through queries, protects it with rules and security, supports multiple users, and hides physical storage details from applications.</p>
+      </div>
+      <div class="question-card">
+        <h3>DBMS vs file system</h3>
+        <p>In a file system, applications manage their own files. In a DBMS, data is centralized and controlled, so redundancy, inconsistency, access difficulty, concurrency problems, and security issues are reduced.</p>
+      </div>
+      <div class="question-card">
+        <h3>Schema vs instance</h3>
+        <p>Schema is the design of the database. Instance is the data stored at a particular time. Structure versus snapshot is the main difference.</p>
+      </div>
+      <div class="question-card">
+        <h3>Data independence</h3>
+        <p>Data independence means changing one level of database design without forcing changes at another level. Physical data independence is easier; logical data independence is harder.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 23. CHECKLIST -->
   <section class="topic-block" id="checklist">
-    <div class="topic-kicker">Section 18</div>
+    <div class="topic-kicker">Section 23</div>
     <h2>Chapter Checklist</h2>
     <ul class="checklist" id="chapter-checklist"></ul>
+  </section>
+
+  <!-- 24. CHAPTER END -->
+  <section class="topic-block" id="chapter-end">
+    <div class="topic-kicker">Section 24</div>
+    <h2>What You Learned</h2>
+    <div class="question-grid">
+      <div class="question-card">
+        <h3>What You Learned</h3>
+        <ul>
+          <li>What data, information, database, DBMS, schema, instance, and data model mean.</li>
+          <li>Why file systems fail when data becomes large, shared, and frequently updated.</li>
+          <li>How the three-level architecture separates user view, logical design, and physical storage.</li>
+          <li>Why physical and logical data independence matter.</li>
+          <li>How DDL, DML, interfaces, query processor, storage manager, and data dictionary fit together.</li>
+        </ul>
+      </div>
+      <div class="question-card">
+        <h3>What You Will Learn Next</h3>
+        <p>
+          Next you will learn the Entity Relationship model: how to represent entities, attributes,
+          relationships, mapping constraints, and keys visually before converting a real-world problem
+          into database tables.
+        </p>
+      </div>
+    </div>
   </section>
 
   <!-- MARK COMPLETE -->
